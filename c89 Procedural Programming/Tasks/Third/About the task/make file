@@ -1,0 +1,13 @@
+Palengvina kompiliavima
+compilina main ir funkcijas atskirai
+linux kalbos dalis
+naudojimas:
+
+ijungi aplanka, kuriame yra visi failai
+ijungi terminal
+make
+spaudi enter
+
+IFNDEF
+
+http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/

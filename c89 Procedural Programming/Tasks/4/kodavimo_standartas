@@ -1,0 +1,57 @@
+Kodavimo standartas:
+
+1. Eiluciu ilgis nevirsija 100 stulpeliu.
+Ilgesni sakiniai yra skaidomi i kelias, trumpesnes uz 80 stulpeliu eilutes stengiantis islaikyti ju prasme.
+
+Ilgo salyginio sakinio pavyzdys:
+if (pirmoji_savybe == true && antroji_savybe == true && trecioji_savybe == true
+   && ketvirtoji_savybe == true && penktoji_savybe == true) {
+	vykdomi_sakiniai;
+}
+
+2. Kodo itraukimas (tabuliacija) yra 4 simboliai.
+Kuo gilesne funkcija, tuo labiau itrauktas kodas. PVZ.: cikle esancio if sakiniai yra dvigubos itraukos.
+Switch sakinyje "switch" ir atvejai yra vienodai itraukti.
+
+Skirtingai itraukto kodo pavyzdys:
+while (simbolis) {
+	sakinys_1;
+	sakinys_2;
+	sakinys_3;
+	if (salyga_teisinga) {
+		sakinys_4;
+		sakinys_5;
+		switch (simbolis) {
+		case 'A':
+			return 'A';
+			break;
+		case 'B':
+			vykdomas_B_kodas;
+			break;
+		}
+		tolesni_if_sakiniai;
+	}
+	tolesni_while_sakiniai;
+}
+
+3. "{" yra dedamas eilutes gale, o "}" pradzioje. 
+Funkcijoms "{" ir "}" yra dedami naujoje eiluteje ir yra vieninteliai tos eilutes simboliai.
+
+4. Po zodziu: if, switch, case, for, do, while - yra dedamas tarpas.
+Tarpo nereikia deti po zodziu, kurie veikia kaip malloc ir sizeof, tai yra, jei jie grazina skaitine reiksme ir yra naudojami priskirime.
+
+PVZ:
+if (salyga) {
+	sakinys;
+}
+kintamasis = sizeof(tipas);
+
+5. Logines, aritmetines ir priskirimo operaciju zenklai isskiriami tarpais.
+"++" ir "--" neiskiriami tarpais.
+Strukturu nariu operatorius "->" neiskiriamas tarpais.
+
+6. Lokaliuju kintamuju pavadinimai yra zodzio ilgio ir aiskus arba raide, jei tai yra ciklo kintamasis.
+Kintamasis gali buti vadinamas dviem zodziais, tada antro zodzio pirma raide yra didzioji.
+
+7. Funkcijos vadinamos keliais zodziais, kiekvieno nepirmo zodzio pirmoji raide - didzoji.
+
