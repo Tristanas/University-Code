@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1555091542 source:c:\users\vilius\documents\github\university-code\algorithms and data structures\1st\queue.c
+	"queue.h"
+
+1555092172 c:\users\vilius\documents\github\university-code\algorithms and data structures\1st\queue.h
+	<stdlib.h>
+	<malloc.h>
+	<stdio.h>
+
+1555092212 source:c:\users\vilius\documents\github\university-code\algorithms and data structures\1st\queue\main.c
+	"../queue.h"
+

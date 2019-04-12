@@ -1,11 +1,9 @@
 
 
 //Vilius Minkevicius PS 1 kursas, 2 grupe
+#include "../queue.h"
 
-#include <stdlib.h>
-#include <malloc.h>
-#include "queue.h"
-
+//Prints the queue. Each node is separated by a space.
 void print_queue(queue head);
 
 int main()
@@ -16,18 +14,24 @@ int main()
 	int i;
 	int n; //n will be used to store values during dequeue.
 	//Inserting values into the queue.
-	for(i = 5; i < 10; i++)insert(&queueInt, i);
+	for(i = 5; i < 10; i++)
+    {
+        enqueue(&queueInt, i);
+    }
+	print_queue(queueInt);
+	printf("The queue now consists of %d nodes \n", queue_length(queueInt));
 	//Removing values and printing them.
-	for(; i > 1; i--) {
-		dequeue(queueInt, &n);
+	printf("Removing values: ");
+	for(; i > 6; i--) {
+		if (dequeue(queueInt, &n)) break;
 		printf ("%d ", n);
 	}
-	if(!is_empty(queueInt))printf("\nThe queue is not empty. \n");
-	{
-		int headValue;
-		head_value(queueInt, &headValue);
-		printf("First = %d \n", headValue);
-	}
+    //Checking if the queue is empty.
+	if(is_empty(queueInt)) printf("\nThe queue is empty. \n");
+    int headValue = 0;
+    //Getting the value of the first element.
+    if (head_value(queueInt, &headValue)) printf("Could not get head value \n");
+    else printf("\nCurrently first is %d \n", headValue);
 	return 0;
 }
 
@@ -57,6 +61,7 @@ int main()
 	return 0;
 }
 */
+//Prints the queue. Each node is separated by a space.
 void print_queue(queue head)
 {
         queue tmp = head;
@@ -67,11 +72,6 @@ void print_queue(queue head)
                 printf("%d ", tmp->data);
                 tmp = tmp->next;
         }
+        printf("\n");
 }
-
-
-
-
-
-
 

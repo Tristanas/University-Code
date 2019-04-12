@@ -1,30 +1,39 @@
 #ifndef eile
 #define eile
 
-#define eilesDydis 100; /*konstanta, naudojama apibrezti pilna eile*/
-typedef int tipas;
+#include <stdlib.h>
+#include <malloc.h>
+#include <stdio.h>
 
-struct Eile {
-	tipas data;
-	struct Eile *kita;
+#define MAXIMUM_LENGTH 100; /*Constant for describing the maximum length of a queue*/
+typedef int type;
+
+struct node {
+	type data;
+	struct node *next;
 };
 
-typedef struct Eile* eil; 
-/*Mano eiles implementacijoje tuscia eile turi nulini elementa.
-Tad pirmas elementas yra eile->kitas. 
-Nuliniame elemente del patogumo gali buti laikomas elementu skaicius.*/
+typedef struct node* queue;
+//In my Queue implementation, an empty queue is considered to be a queue which consists of only 1 node which doesn't point to any other node.
 
-int kurti_eile(eil *pradzia);/*grazina 1, jei ivyko klaida kuriant eile */
-int ar_tuscia(eil pradzia);/*grazina 1 jei tuscia, 0 - jei ne */
-int ar_pilna(eil pradzia);/*1 - taip, 0 - ne */
-int iterpti(eil *pradzia, tipas verte);/*jei ivyko klaida, return 1*/
+//Is functions return 1 if the quality is true, 0 if not.
+int is_empty(queue head);/*grazina 1 jei tuscia, 0 - jei ne */
+int is_full(queue head);/*1 - taip, 0 - ne */
 
-/*Kitos dvi komandos priskiria verte nurodyto kintamojo adrese.
-Nenorint priskirti reiksmes reikia nurodyti NULL adresa*/
-int isimti_elementa(eil pradzia, tipas *ptr); /*grazina 1, jei eile buvo tuscia*/
-void pirmo_verte(eil pradzia, tipas *ptr);
+//The following two functions return 1 if there was not enough memory for a new queue or node.
+//Creates an empty queue. If head points to an existing queue, deletes it and creates and empty one.
+int create_queue(queue *head);
+//Inserts a new node at the end of the queue.
+int enqueue(queue *head, type value);/*jei ivyko klaida, return 1*/
 
-int eiles_dydis(eil pradzia); /*grazina eiles dydi*/
-void istrinti_eile(eil *pradzia); /* Istrina visa eile ir padaro eiles adresa NULL.*/
+//The following two return 2 if the given pointer is null, 1 if the queue is empty and 0 if the value was received successfully.
+//Removes the first node and stores its value at ptr.
+int dequeue(queue head, type *ptr);
+//Stores the first node's value at ptr without removing it from the queue.
+int head_value(queue head, type *ptr);
+
+//Iterates through the queue and returns its size.
+int queue_length(queue head); /*grazina eiles dydi*/
+void delete_queue(queue *head); /* Istrina visa eile ir padaro eiles adresa NULL.*/
 
 #endif

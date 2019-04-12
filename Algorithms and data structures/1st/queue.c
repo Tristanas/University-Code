@@ -1,26 +1,26 @@
-#include <malloc.h>
-#include <stdlib.h>
 #include "queue.h"
 
 
-
-int kurti_eile(eil *pradzia)
+//Creates a new queue if the head is null. If not, deletes the queue first.
+int create_queue(queue *head)
 {
-	if(*pradzia) istrinti_eile(pradzia);
-	*pradzia = malloc(sizeof(struct Eile));
-	if (*pradzia) return 1;
+	if(*head) delete_queue(head);
+	*head = malloc(sizeof(struct node));
+	//Making sure that the queue is empty by setting its next element to null.
+	(*head)->next = NULL;
+	if (*head) return 1;
 	else return 0;
 }
 
-int ar_tuscia(eil pradzia)
+int is_empty(queue head)
 {
-	if(pradzia->kita) return 0;
-	else return 1; //1 - tuscia
+	if(head->next) return 0;
+	else return 1;
 }
-
-int ar_pilna(eil pradzia)
+//A queue is considered full if no new elements can be created.
+int is_full(queue head)
 {
-	eil tmp = malloc(sizeof(struct Eile));
+	queue tmp = malloc(sizeof(struct node));
 	if (tmp) {
 		free (tmp);
 		return 0;
@@ -31,59 +31,74 @@ int ar_pilna(eil pradzia)
 	}
 }
 
-
-
-tipas iterpti(eil *pradzia, tipas n)
+//Puts a new node at the back of the queue.
+int enqueue(queue *head, type n)
 {
-	eil ptrSarasui = *pradzia;
-	eil tmp;
-	tmp = malloc(sizeof(struct Eile));
-	if (tmp == NULL) 
+	queue queuePointer = *head;
+	//Creating a new queue element.
+	queue tmp;
+	tmp = malloc(sizeof(struct node));
+	if (tmp == NULL)
 		return 1;
+	//If there is enough memory, we continue initializing it.
 	tmp->data = n;
-	tmp->kita = NULL;
-	while (ptrSarasui -> kita != NULL)ptrSarasui = ptrSarasui->kita;
-	ptrSarasui->kita = tmp;
+	tmp->next = NULL;
+	//Iterating through the queue to put the new element at its end.
+	while (queuePointer -> next != NULL)
+    {
+        queuePointer = queuePointer->next;
+    }
+	queuePointer->next = tmp;
 	return 0;
 }
 
-int isimti_elementa(eil pradzia, tipas *ptr)
+//Removes the first node from the queue and stores its value at ptr.
+int dequeue(queue head, type *ptr)
 {
-	eil trinti = pradzia->kita;
-	if(trinti) {
-	        if (ptr) *ptr = trinti->data;
-		pradzia->kita = trinti->kita;
-		free(trinti);
+    //Marking the first element for deletion.
+	queue toDelete = head->next;
+	if(toDelete) {
+        //Storing data if a correct pointer was given.
+        if (ptr) *ptr = toDelete->data;
+        //Making the second node the first.
+		head->next = toDelete->next;
+		//Freeing up space taken by the node marked for deletion.
+		free(toDelete);
 		return 0;
 	}
 	return 1;
 }
 
-void pirmo_verte(eil pradzia, tipas *ptr)
+//Stores the first node's value at ptr without removing it from the queue.
+int head_value(queue head, type *ptr)
 {
-        eil tmp = pradzia->kita;
+        queue tmp = head->next;
+        if(tmp == NULL) return 1;
         if (ptr) *ptr = tmp->data;
+        else return 2;
+        return 0;
 }
 
-
-int eiles_dydis(eil pradzia)
+//Iterates through the queue and returns its size.
+int queue_length(queue head)
 {
 	int n = 0;
-	if (ar_tuscia(pradzia))return 0;
-	while(pradzia = pradzia->kita)n++;
+	if (is_empty(head))return 0;
+	while((head = head->next))n++;
 	return n;
 }
 
-void istrinti_eile(eil *pradzia)
+//Deletes the queue.
+void delete_queue(queue *head)
 {
-	eil tmp = *pradzia;
-	eil trinti;
+	queue tmp = *head;
+	queue toDelete;
 	while (tmp != NULL) {
-		trinti = tmp;
-		tmp = tmp->kita;
-		free(trinti);
+		toDelete = tmp;
+		tmp = tmp->next;
+		free(toDelete);
 	}
-	*pradzia = NULL;
+	*head = NULL;
 }
 
 
@@ -91,4 +106,4 @@ void istrinti_eile(eil *pradzia)
 
 
 
-	
+
