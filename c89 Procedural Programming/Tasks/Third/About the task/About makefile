@@ -1,0 +1,15 @@
+	Pros of makefile:
+1. Makes compilation easier,
+2. Compiles main and function source code separately,
+
+It's a Linux instruction.
+
+	Usage:
+1. In the folder where all the source code is, create a file named "makefile"
+2. In it write all the compilation instructions.
+3. Open terminal in the same folder.
+4. Write "make" and press enter. - Linux will search for the "makefile" in this folder and executes it's commands.
+5. Given that you've written correct compilation commands and code, the source will compile and return an executable file.
+
+Source:
+http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/

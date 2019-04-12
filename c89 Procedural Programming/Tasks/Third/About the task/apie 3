@@ -1,7 +1,0 @@
-Uzduoties forma
-1. file pavadinimai per parametrus perduodami
-2. vartotojas nurodo file pavadinimus (naudinga einant prie to, kad vienos programos leidzia kitas)
-3. main (int argc, char argv[]) ... if(argc>=3) ... else return 0; return klaidos_kodas - parodo, kokia klaida ivyko
-4. programa - 3 file: main.c, antraste.h, antraste.c (#include "antraste.h") 
-5. makefile
-6. IFNDEF?

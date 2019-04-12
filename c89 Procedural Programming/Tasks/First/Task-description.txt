@@ -1,0 +1,3 @@
+The first task was to learn the usage of cycles. The teacher knew, we had to learn for and while cycles in school, so he requested the usage of a "do while". 
+
+The task was to request integer input from the user until the biggest number written is at least twice as big as the smallest one.

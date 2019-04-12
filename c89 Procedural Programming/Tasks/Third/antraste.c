@@ -3,7 +3,7 @@
 #include "antraste.h"
 
 //Takes a string consisting of words and alters it wherever the last letter of a word matches the first of the following word. Words are connected, as in the separating whitespace is removed and the first letter of the second word is omitted.
-void JoinStrings(char *inputString, char *resultString)
+void JoinWords(char *inputString, char *resultString)
 {
 	//An array of bytes indicating which chars of the input string are whitespace.
     char ToRemove[255]= {0};

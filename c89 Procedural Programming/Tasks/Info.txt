@@ -1,0 +1,1 @@
+During the course we were working with Linux and used no IDE to compile code. Thus we had the chance to learn compilation commands, use makefiles and to create our own code libraries.

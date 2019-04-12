@@ -1,0 +1,12 @@
+Task requirements:
+1. Passing file names through command line arguments. (which is convenient in case one program calls another)
+2. Checking if the correct amount of arguments were given. Exiting if not.
+3. Using of return codes. Helps with testing whether programs work without mistakes.
+4. Usage of header files. The project should be: main.c, library.c, library.h.
+5. Usage of makefile for convenient compilation.
+6. Usage of IFNDEF so that unchanged source code won't be recompiled.
+7. Taking input from one file and outputing to another.
+8. A separate function needs to be written for altering the file input.
+
+Task description:
+Write a function, which connects each pair of neigboring words in a given text if the first one's last symbol is equal to the second one's first symbol.

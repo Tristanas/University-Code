@@ -1,6 +1,6 @@
-#ifndef antraste
-#define antraste
+#ifndef ANTRASTE_H_INCLUDED
+#define ANTRASTE_H_INCLUDED
 
-void JoinStrings(char*, char*);
+void JoinWords(char*, char*);
 
-#endif
+#endif // ANTRASTE_H_INCLUDED

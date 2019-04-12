@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1555053552 source:c:\users\vilius\documents\github\university-code\c89 procedural programming\tasks\third\antraste.c
+	<stdio.h>
+	<string.h>
+	"antraste.h"
+
+1555053610 c:\users\vilius\documents\github\university-code\c89 procedural programming\tasks\third\antraste.h
+
+1555054012 source:c:\users\vilius\documents\github\university-code\c89 procedural programming\tasks\third\workwithstrings\main.c
+	<stdio.h>
+	<string.h>
+	"../antraste.h"
+

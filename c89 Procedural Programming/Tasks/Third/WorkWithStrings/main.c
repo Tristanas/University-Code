@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "antraste.h"
+#include "../antraste.h"
 /*Viliminki*/
 int main(int argc, char *argv[])
 {

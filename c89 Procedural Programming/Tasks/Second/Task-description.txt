@@ -1,0 +1,9 @@
+The second task was about the usage of arrays. The set of requirements were:
+1. The use of functions that return some kind of result.
+2. The use of void functions which take in pointer type variables so that their changes aren't temporary.
+3. Working with arrays inside of functions.
+
+The task was to create a console application, which requests an integer input n and then n more integer inputs. The application should store input and then print it in a sequence:
+a) first, print values between minimum and minimum plus one third of difference between maximum and minimum,
+b) then print values higher than the first ones, but lower than minimum plus two thirds of the difference,
+c) lastly, print values higher than the second ones including the maximum value.

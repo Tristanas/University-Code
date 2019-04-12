@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1555059717 source:c:\users\vilius\documents\github\university-code\c89 procedural programming\tasks\fourth\one-way-linked-list\main.c
+	<stdlib.h>
+	<malloc.h>
+	"../antr4.h"
+
+1555059556 c:\users\vilius\documents\github\university-code\c89 procedural programming\tasks\fourth\antr4.h
+

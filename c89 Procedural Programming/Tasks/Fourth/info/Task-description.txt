@@ -1,0 +1,17 @@
+Requirements:
+1. Usage of switch for execution of selected functions based on user input.
+2. Writing separate functions which:
+	a) Create an empty linked list;
+	b) Insert a new element at any point of the linked list;
+	c) Remove an element by its index;
+	d) Delete the linked list;
+	e) Alter the linked list based on the task description.
+3. Use of structs and memory allocation.
+4. Use of "free" method to reduce the amount of used memory once something won't be used anyore.
+5. Write code using your own coding standard written in a text file.
+(It is written in Lithuanian and I'm not translating it for now)
+6. Requirements from the previous task.
+7. No usage of scanf inside of library functions.
+
+Task description:
+n9. Create a one-way linked-list. Create a procedure, which rewrites the linked-list in the opposite order.
