@@ -5,3 +5,10 @@ Requirements:
 3. Store service information such as: assistant availability, average client wait time, total amount of clients, average queue length.
 4. Have parameters for customer arival frequency/likelyhood during a given interval.
 5. At the end of the simulation, print results and a decision, which choice would suit the bank better.
+
+Currently this project can only be executed on Linux.
+To do:
+1) create structs to store simulation information and simulation parameters,
+2) create a function for printing results to a file or stdin,
+3) pass those structs to simulation and other functions,
+4) make the project windows-fiendly.
