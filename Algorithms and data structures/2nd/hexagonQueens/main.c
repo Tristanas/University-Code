@@ -1,74 +1,76 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void printBoard (bool mas[50][50], int size, int direction);
-bool treeOfPuttingOptions(bool mas[50][50], int column, int size, int counter);
-bool checkCanPut(bool mas[50][50], int row, int column, int size);
+//Prints the board in a format which resembles the task.
+void printBoard (bool board[50][50], int size, int direction);
+//A recursive function, which branches out from the first position to cover all possibilities. Before calling itself on a nearby square, it checks whether it can put a queen over there.
+void treeOfPuttingOptions(bool board[50][50], int column, int size, int counter);
+//A function, which checks whether a new queen on a specific square wouldn't be attacked by any other queen.
+bool checkCanPut(bool board[50][50], int row, int column, int size);
 
-int maximum = 7;
+int maximum = 0;
 int combinationCounter = 0;
 
 int main()
 {
-    FILE* ivestis;
-    ivestis = fopen("input.txt", "r");
-
-    if (!ivestis) {
-        printf("Kilo beda. \n");
+    FILE* input;
+    input = fopen("input.txt", "r");
+    //Checking if the input file exists.
+    if (!input) {
+        printf("ERROR, input file not found. \n");
         return 1;
     }
+    //Getting the board side length parameter.
     int n;
-    fscanf(ivestis, "%d", &n);
-    printf("Sveiki atvyke! Jusu trikampio krastines yra %d ilgio. \n", n);
-    bool mas[50][50] = {{0}};
+    fscanf(input, "%d", &n);
+    printf("Welcome, your triangular board has a %d tiles long side. \n", n);
+    bool board[50][50] = {{0}};
 
-    /*for(int i = 3; i< 17; i++) {
-        treeOfPuttingOptions(mas, 0, i, 0);
-        printf("I %d ilgio lygiakrasti trikampi galima ideti iki %d karalien. \n", i, maximum);
-        maximum = 0;
-    }*/
-    //
-    treeOfPuttingOptions(mas, 0, n, 0);
-    printf("I trikampi galima ideti daugiausiai %d karalien. \n", maximum);
-    printf("Isbandyta %d kombinaciju. \n", combinationCounter);
-    fclose(ivestis);
+    //Starting the recursive deployment of queens.
+    treeOfPuttingOptions(board, 0, n, 0);
+    printf("You can put maximum %d queens. \n", maximum);
+    printf("In total %d combinations were tried. \n", combinationCounter);
+    fclose(input);
     return 0;
 }
 
-/**Patikrina, ar i mas[row][column] padeta karaliene yra kertama is kurios nors is 2 pusiu*/
-bool checkCanPut(bool mas[50][50], int row, int column, int size)
+//A function, which checks whether a new queen on a specific square wouldn't be attacked by any other queen.
+bool checkCanPut(bool board[50][50], int row, int column, int size)
 {
+    //Since we're putting queens left to right (or right to left depending on perspective), we only need to check with previous queens.
     int i;
     for (i = 0; i < column; i++) {
-        if (mas[row][i]) return false;
-        if (mas[row + i][column - i] && column >= 0) return false;
+        //Checking the same column:
+        if (board[row][i]) return false;
+        //Checking the diagonal:
+        if (board[row + i][column - i] && column >= 0) return false;
     }
     return true;
 }
 
-bool treeOfPuttingOptions(bool mas[50][50], int column, int size, int counter)
+//A recursive function, which branches out from the first position to cover all possibilities. Before calling itself on a nearby square, it checks whether it can put a queen over there.
+void treeOfPuttingOptions(bool board[50][50], int column, int size, int counter)
 {
     combinationCounter ++;
-    if (counter == maximum) {
-        //maximum = counter;
-        printBoard(mas, size, 0);
+    if (counter > maximum) {
+        maximum = counter;
+        printBoard(board, size, 0);
     }
-    if (column >= size - 1) return true;
-    //if(column % 2 == 0)treeOfPuttingOptions(mas, column + 1, size, counter);
     int i;
+    //During the cycle, each tile on the board is checked if it is suitable for a queen and the recursive function is called on it if so.
     for (i = 0; i < size - column; i++) {
-        if (checkCanPut(mas, i, column, size)) {
-                mas[i][column] = true;
-                //if(column == 0 && i > size / 2) return false;
-                if (treeOfPuttingOptions(mas, column + 1, size, counter + 1)) return true;
-                mas[i][column] = false;
+        if (checkCanPut(board, i, column, size)) {
+                //Putting the queen.
+                board[i][column] = true;
+                treeOfPuttingOptions(board, column + 1, size, counter + 1);
+                //Backtracking so that the function can be called at the lower column.
+                board[i][column] = false;
         }
     }
-    return false;
-
 }
 
-void printBoard (bool mas[50][50], int size, int direction)
+//Prints the board in a format which resembles the task.
+void printBoard (bool board[50][50], int size, int direction)
 {
 
     int i, x, j;
@@ -77,23 +79,23 @@ void printBoard (bool mas[50][50], int size, int direction)
         for (x = 0; x < i; x++) printf(" ");
         for (j = 0; j < size - i; j++) {
             switch (direction){
-            case 0: // normaliai
-                printf("%d ", mas[i][j]);
+            case 0: // Regular orientation
+                printf("%d ", board[i][j]);
                 break;
-            case 1: //normalaus vertikalus atspindys
-                printf("%d ", mas[i][size - i - j - 1]);
+            case 1: //Mirror reflection
+                printf("%d ", board[i][size - i - j - 1]);
                 break;
-            case 2: // 240 laipsniu pasuktas
-                 printf("%d ", mas[size - i - 1][j]);
+            case 2: // 240 degrees turn
+                 printf("%d ", board[size - i - 1][j]);
                 break;
-            case 3: // 240 laipsn pasuktas veidr atspind
-                printf("%d ", mas[size - i - 1][size - j - i - 1]);
+            case 3: // 240 degrees turn with mirror reflection
+                printf("%d ", board[size - i - 1][size - j - i - 1]);
                 break;
-            case 4: //pasukus 120 laipsniu
-                printf("%d ", mas[j][size - j - i - 1]);
+            case 4: //120 degrees turn
+                printf("%d ", board[j][size - j - i - 1]);
                 break;
-            case 5: // 120 laipsn. pasuktas veidrodinis atspindys
-                printf("%d ", mas[size - j - 1][size - j - i - 1]);
+            case 5: //120 degrees turn with mirror reflection
+                printf("%d ", board[size - j - 1][size - j - i - 1]);
                 break;
             }
 

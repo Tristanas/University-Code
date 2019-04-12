@@ -5,6 +5,9 @@
 #include "eile.h"
 
 typedef struct Eile* eil; /*eileje yra talpinamos void rodykles*/
+
+void spausdinti_eile(struct Eile *pradzia, int type);
+
 int main()
 {
 	int d;
@@ -25,4 +28,32 @@ int main()
 	}
 	istrinti_eile(&eilInt);
 	return 0;
+}
+
+void spausdinti_eile(struct Eile *pradzia, int type)
+{
+	pradzia = pradzia->kita;
+	tipas n;
+	printf("Eile yra tokia: \n");
+	char format[3] = "%d ";
+	switch (type) {
+	        case 1:
+	        	format[1] = 'd';
+	                break;
+	        case 2:
+	        	format[1] = 'f';
+	                break;
+	        case 3:
+	        	format[1] = 's';
+	                break;
+	        case 4:
+	        	format[1] = 'c';
+	                break;
+	        }
+	while (pradzia != NULL) {
+	        n = pradzia->data;
+	        pradzia = pradzia->kita;
+	        printf(format, data);
+	}
+	printf("\n");
 }

@@ -1,0 +1,9 @@
+The first assignment was to implement a data structure called queue, which is a linked-list which has specific functionality available. It is a first-in first-out type of structure, which is manipulated using these functions:
+	1) Create empty queue,
+    2) Check if the queue is empty,
+    3) Check if the queue is full,
+    4) Enqueue,
+    5) Dequeue,
+    6) Get head's value,
+    7) Get queue's length,
+    8) Delete queue.

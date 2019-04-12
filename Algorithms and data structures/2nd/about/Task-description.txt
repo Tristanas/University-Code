@@ -1,0 +1,3 @@
+The task was to solve a polinomial difficulty problem using a recursive algorithm with backtracking. The assignment was as follows: "Given a number n, write the maximum number of queens that can be placed on a equilateral triangular board with n hexagonal tiles on each side.
+
+There was no requirement for efficiency, so I wrote a simple algorithm which tried out each and every legal state and prints out all the boards where the highest possible number of queens are put.

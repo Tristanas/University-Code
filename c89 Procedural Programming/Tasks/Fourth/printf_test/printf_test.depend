@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1555083478 source:c:\users\vilius\documents\github\university-code\c89 procedural programming\tasks\fourth\printf_test\main.c
+	<stdio.h>
+	<stdlib.h>
+

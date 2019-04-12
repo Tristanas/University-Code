@@ -1,0 +1,1 @@
+During the course we programmed using mainly C, but at some assignments C++ was an option. The main focus was implementing data structures and functionality related to their handling. Later tasks are based on usage of peers' structures and algorithms while solving a specific problems.
