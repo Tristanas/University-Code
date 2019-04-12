@@ -1,0 +1,9 @@
+Operacijos:
+    • Sukurti tuščią eilę
+    • Patikrinti, ar eilė tuščia
+    • Patikrinti, ar eilė pilna
+    • Įdėti (angl. enqueue) naują elementą į eilę
+    • Išimti (angl. dequeue) elementą iš eilės
+    • Gauti pirmo eilės elemento duomenis, neišimant jo iš eilės
+    • Gauti eilės elementų skaičių
+    • Sunaikinti eilę

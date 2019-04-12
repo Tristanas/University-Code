@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1522828764 source:u:\ads\antra\hexagonqueens\main.c
+	<stdio.h>
+	<stdbool.h>
+

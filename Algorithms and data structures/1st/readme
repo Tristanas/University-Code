@@ -1,0 +1,10 @@
+1. Kompiliavimas:
+Naudojamas make (makefile yra surašytos kompiliavimo komandos).
+2. Funkcijos:
+Int funkcijos, jei netikrina eilės savybių, grąžina 1, jei įvyko klaida priskiriant atmintį arba išimant elementą. Jei tikrina: 1 reiškia taip, 0 - ne (ar_tuščia: 1 - taip, 0 - ne).
+3. Duomenų tipe yra talpinami duomenys, kurių tipas yra apibrėžiamas typedefine. Norint galima keisti jį headerio file;
+4. Tuščia eilė turi nulinį elementa, kuriame laikoma rodyklė į pirmą elementą ir kintamasis, kuriame gali būti laikomas elementų skaičius.
+
+
+Parašė:
+Vilius Minkevičius

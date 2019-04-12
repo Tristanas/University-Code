@@ -1,0 +1,15 @@
+
+ #### Galutine statistika: ####
+ 
+Su gerai apmokytais kasininkais: 
+Maksimalus eiles dydis: 23 
+Vidutinis kasininku uzimtumas: 0.786667 
+Maksimalus laukimo laikas: 6 
+Is viso klientu: 368 
+ 
+Su prasciau apmokytais kasininkais: 
+Maksimalus eiles dydis: 24 
+Vidutinis kasininku uzimtumas: 0.720909 
+Maksimalus laukimo laikas: 6 
+Is viso klientu: 314 
+ 

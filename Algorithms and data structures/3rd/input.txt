@@ -1,0 +1,19 @@
+//Darbo dienos laikas minutemis (sveikas sk)
+100
+//Darbo dienos laiko vieneto dydis minutemis (sveikas sk)
+2
+//Maksimalus nauju klientu kiekis per laiko tarpa
+20
+//tolesnes 2 eilutes: gerai apmokytu darbuotoju vid aptarnavimo laikas ir prastai apmokytu.
+7
+15
+//Kiek pinigu nori bankas isleisti kasininku algoms (EUR, ne LTL, sveikas sk)
+60000
+//tolesnes 2 eilutes: gerai apmokytu darbuotoju alga ir prastai apmokytu alga.
+1800
+900
+//Pertraukeles trukme:
+15
+//toliau 2 eil.: gerai apmokytu kas. pertraukeles daznis, prastu - daznis.
+300
+180

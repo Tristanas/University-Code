@@ -1,0 +1,7 @@
+Using someone's queue and long integer implemententations simulate customer service of a bank. The bank is considering hiring well trained assistants instead of less trained ones, but they require higher wages. Given wages and average service time of both types, simulate, which decision would serve the bank better. 
+Requirements:
+1. Use both libraries for reasonable purposes.
+2. Store parameters in a file which also has comments about where each parameter is used and what it means.
+3. Store service information such as: assistant availability, average client wait time, total amount of clients, average queue length.
+4. Have parameters for customer arival frequency/likelyhood during a given interval.
+5. At the end of the simulation, print results and a decision, which choice would suit the bank better.
