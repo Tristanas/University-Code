@@ -7,3 +7,5 @@ The first assignment was to implement a data structure called queue, which is a 
     6) Get head's value,
     7) Get queue's length,
     8) Delete queue.
+
+The readme is in Lithuanian as it was intended for my peers, who had to use my queue implementation for 3rd or 4th task.

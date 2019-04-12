@@ -1,8 +1,8 @@
-all: main.o eile.o
-	gcc -o mainas eile.o main.o 
+all: main.o queue.o
+	gcc -o mainas queue.o main.o 
 main.o: main.c
 	gcc -c main.c -o main.o
-eile.o: eile.c
-	gcc -c eile.c -o eile.o
+queue.o: queue.c
+	gcc -c queue.c -o queue.o
 clean:
 	rm *.o
