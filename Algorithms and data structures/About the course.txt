@@ -1,1 +1,7 @@
 During the course we programmed using mainly C, but at some assignments C++ was an option. The main focus was implementing data structures and functionality related to their handling. Later tasks are based on usage of peers' structures and algorithms while solving a specific problems.
+
+During the process of implementing data structures we were encouraged to track how much time we spend at which parts of the development process. We also were encouraged to track:
+i) which functionality we have already created,
+ii) how many lines of code it takes,
+iii) how much time we spend writing a single line of code on average.
+Having gathered enough information we were tasked to predict, how many lines of code would the functionality consist of before actually writing it and, knowing the average time a line takes, how long it would take to write everything. This is a useful skill as it helps you to evaluate whether you can complete a project in a given timeframe.

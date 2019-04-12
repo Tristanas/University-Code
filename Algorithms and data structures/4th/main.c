@@ -1,119 +1,103 @@
 #include <stdio.h>
-#include "stekas.h"
-#include "list.h"
+#include "stack.h"
 #include <stdlib.h>
 
-
-typedef struct grandine* list;
-
-/* Jei reikes realizuoti grafa kaip adt
-struct virsune {
-	int numeris;
-	list kaimynuSarasas;
-};
-
-struct grafas {
-      
-};
-*/
-
-char kaimynystesMatrica[100][100] = {0};
+char neighbourhoodMatrix[100][100] = {0};
     
 int main()
 {
-    //list sarasasKeliui = NULL; //sarasas, skirtas zymeti DFS keliui
-    stk *stekas;
-    createEmpty(&stekas);
+    stk *stack;
+    createEmpty(&stack);
     //statinis masyvas realizuojas grafa
-    FILE *dokumentasIvesciai = fopen("input.txt", "r");
-    int virsuniuSk, virsune, kaimynas;
+    FILE *input = fopen("input.txt", "r");
+    int numberOfNodes, node, neighbour;
     
-    if (dokumentasIvesciai == NULL) {
-        printf("Dokumentas nerastas, programa baigia darba \n");
+    if (input == NULL) {
+        printf("ERROR, document not found.\n");
         return 1;
     }
     
-    fscanf(dokumentasIvesciai,"%d\n",&virsuniuSk);
-    while (!feof(dokumentasIvesciai)) {
-        fscanf(dokumentasIvesciai, "%d %d\n", &virsune, &kaimynas);
-        if (virsune != kaimynas) kaimynystesMatrica[virsune][kaimynas] = 1;
+    fscanf(input,"%d\n",&numberOfNodes);
+    while (!feof(input)) {
+        fscanf(input, "%d %d\n", &node, &neighbour);
+        if (node != neighbour) neighbourhoodMatrix[node][neighbour] = 1;
     }
-    fclose(dokumentasIvesciai);
-    //Spausdinti matrica
+    fclose(input);
+    //Print the matrix
     /*int i, j;
-    for (i = 0; i < virsuniuSk; i++) {
-        for (j = 0; j < virsuniuSk; j++) printf("%d ", kaimynystesMatrica[i][j]);
+    for (i = 0; i < numberOfNodes; i++) {
+        for (j = 0; j < numberOfNodes; j++) printf("%d ", neighbourhoodMatrix[i][j]);
         printf("\n");
     }*/
     
-    int pavykoRastiCikla = 0;
-    int *aplankytosVirsunes = calloc(virsuniuSk, sizeof(int));
-    int *kelias = calloc(virsuniuSk, sizeof(int));
-    //i - pradine virsune paieskai
-    int dabartineVirs = 0, yraKaAplankyti, i, j;
-    int paskutineVirsune, pradineVirsune = 0;
+    int foundCycle = 0;
+    int *visitedNodes = calloc(numberOfNodes, sizeof(int));
+    int *road = calloc(numberOfNodes, sizeof(int));
+    //i - starting node for search.
+    int currentNode = 0, isAllVisited, i, j;
+    int lastNode, startingNode = 0;
     
-    for (pradineVirsune = 0; pradineVirsune < virsuniuSk && !pavykoRastiCikla; pradineVirsune++) {
+    for (startingNode = 0; startingNode < numberOfNodes && !foundCycle; startingNode++) {
     	printf("####################\n");
-        printf("Kaip pradine virsune i steka buvo ideta %d \n", pradineVirsune);
+        printf("Kaip pradine node i steka buvo ideta %d \n", startingNode);
     	printf("####################\n");
-        for (i = 0; i < virsuniuSk; i++) {
-            kelias[i] = 0;
-            aplankytosVirsunes[i] = 0;
+        for (i = 0; i < numberOfNodes; i++) {
+            road[i] = 0;
+            visitedNodes[i] = 0;
         }
-        push(pradineVirsune, &stekas);
-        kelias[pradineVirsune] = 1;
-        aplankytosVirsunes[pradineVirsune] = 1;
-    	dabartineVirs = pradineVirsune;
-        while (!pavykoRastiCikla) {
-            yraKaAplankyti = 0;
-            printf("%d yra dabartine virsune. ", dabartineVirs);
-            for (i = 0; i < virsuniuSk && !yraKaAplankyti; i++) {
-                if (kaimynystesMatrica[dabartineVirs][i] && !aplankytosVirsunes[i]) {
-                    push(i, &stekas);
-                    kelias[i] = 1;
-                    printf("Imama %d, kuri yra jos kaimyne \n", i);
-                    printf("###I steka buvo ideta %d ###\n", i);
-                    aplankytosVirsunes[i] = 1;
-                    yraKaAplankyti = 1;
+        push(startingNode, &stack);
+        road[startingNode] = 1;
+        visitedNodes[startingNode] = 1;
+    	currentNode = startingNode;
+        while (!foundCycle) {
+            isAllVisited = 0;
+            printf("%d is the current node. ", currentNode);
+            for (i = 0; i < numberOfNodes && !isAllVisited; i++) {
+                if (neighbourhoodMatrix[currentNode][i] && !visitedNodes[i]) {
+                    push(i, &stack);
+                    road[i] = 1;
+                    printf("Adding %d, which is a neighbour \n", i);
+                    printf("###%d was added to the stack###\n", i);
+                    visitedNodes[i] = 1;
+                    isAllVisited = 1;
                 }
             }
-            if (!yraKaAplankyti) {
-                int k = stekas->data;
-                kelias[k] = 0;
-                printf("Bet grizome, mat ji be nauju kaimynu \n", k);
-                printf("###Is steko isimta %d ###\n", k);
-                pop(&stekas);
-                if (k == pradineVirsune) break;
+            if (!isAllVisited) {
+                int k = stack->data;
+                road[k] = 0;
+                printf("Returing as there were no new neighbours.\n", k);
+                printf("###%d was removed from the stack###\n", k);
+                pop(&stack);
+                if (k == startingNode) break;
             }
             
-            dabartineVirs = stekas->data;
-            for (i = 0; i < virsuniuSk; i++) {
-                if (kelias[i] && kaimynystesMatrica[dabartineVirs][i]) {
-                    printf("%d yra dabartine virsune ir ji turi kaimyne %d, kuri jau buvo kelyje \n", dabartineVirs, i);
-                    pavykoRastiCikla = 1;
-                    paskutineVirsune = i;
+            currentNode = stack->data;
+            for (i = 0; i < numberOfNodes; i++) {
+                if (road[i] && neighbourhoodMatrix[currentNode][i]) {
+                    printf("%d is the current node and is a neighbour of %d, which has already been visited \n", currentNode, i);
+                    foundCycle = 1;
+                    lastNode = i;
                 }
             }
             
         }    
             
-          if (!pavykoRastiCikla) {
-            destroy(&stekas);
-            createEmpty(&stekas);
+		if (!foundCycle) {
+            destroy(&stack);
+            createEmpty(&stack);
         }  
     }
     
-    if (pavykoRastiCikla) {
-        printf("Pavyko rasti toki cikla: \n");
-        printf("%d ", paskutineVirsune);
-        while (!ArTuscias(stekas) && stekas->data != paskutineVirsune) {
-            printf("%d ", stekas->data);
-            pop(&stekas);
+    if (foundCycle) {
+        printf("Found the cycle: \n");
+        printf("%d ", lastNode);
+        while (!ArTuscias(stack) && stack->data != lastNode) {
+            printf("%d ", stack->data);
+            pop(&stack);
         }
-        printf("%d \n", stekas->data);
+        printf("%d \n", stack->data);
     }
-    else  printf("Nepavyko rasti ciklo \n");
+    else  printf("Could not find a cycle. \n");
     
     return 0;
 }

@@ -1,0 +1,6 @@
+The task was to create an oriented graph and to search for cycles using data structures created by peers. I decided to use a stack and with it implement a depth-first search algorithm, which stops after the first cycle is detected. If there is a cycle, the program prints it.
+
+Some requirements:
+1. Use file input for storing the size of the graph and connections between nodes.
+2. Implement the graph using either neighbour lists or neighbourhood matrix.
+3. Print the cycle.
