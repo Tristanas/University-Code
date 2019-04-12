@@ -1,0 +1,1 @@
+The comments and variable names are in Lithuanian. And there is a lot of text and not as much order. Thus i'll probably not translate each variable name and comment to English.

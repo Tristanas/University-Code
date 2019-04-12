@@ -1,0 +1,32 @@
+The task consisted of 3 parts:
+1. Reading from a csv type of file, transforming its contents and saving changes in a separate file. The input file is supposed to have around 1000 lines and each should hold information about a dot:
+	i) name
+	ii) X coordinate
+	iii) Y coordinate
+	iv) Z coordinate
+	v) velocity module
+values are separated by semicolons and ii)-v) are integers between -10000 and 10000.
+
+My task was to replace each numeric field with its bigest digit.
+
+2. The task was named: file "encoding". It consists reading from a txt file, whose size is a multiple of 3, altering 3 byte block according to a rule and then writing the altered text to the output file.
+
+My rule was:
+(2 → 9 → 19 → 8→ 1)
+Bits in a block are numerated from 0th to 23rd.
+Let's take "ABC" for example. In the block, bits are numerated from higher multitude to lower as if ABC was a number.
+Thus the block is: 43h 42h 41h
+Or in binary: 0100 0011 0100 0010 0100 0001
+              ^23rd bit                   ^0th bit.
+After applying the rule, the block would become:
+			  0101 0011 0100 0000 0100 0001
+or in hexadecimal:
+				  S			@		  A
+And this block would be written to the output as "A@S"
+
+3. The third task, which I didn't complete was a mini-disassembler. It takes binary code and transforms it back to assembly language code. There were 4 requirements:
+	i) the mini-disassembler would read from a dos COM file and output to a txt file.
+	ii) it would translate all mov instructions
+	iii) it would translate certain logical/mathematical operation
+	iv) it would print all unknown operations like "db 23 52..." where 23 53 and so on are unknown bytes until the next known operation is found.
+	

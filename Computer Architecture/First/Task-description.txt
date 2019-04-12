@@ -1,0 +1,5 @@
+The first task comprises of 4 parts:
+1. swap 2 symbols in a inputed line, print the result and undo the swap.
+2. for each symbol, print the sum of 3rd, 4th and highest bits' values.
+3. for each symbol, print its value divided by 9 and then reduced by 10
+4. lastly, print the positions of those symbols, whose digits' sum in octal is between 3 and 5.
