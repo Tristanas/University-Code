@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.18816067653276955, 0.5031712473572939" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg2dsimuliatorius.SimuliacijosKontroleris">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="599.0" prefWidth="176.0">
+         <children>
+            <ListView fx:id="funkcijos" layoutX="20.0" layoutY="14.0" prefHeight="495.0" prefWidth="146.0" />
+            <Button fx:id="prideti" layoutX="20.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="114.0" text="Prideti komanda" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="599.0" prefWidth="272.0">
+         <children>
+            <Button fx:id="isvalyti" layoutX="98.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="96.0" text="Valyti" />
+            <TextArea fx:id="kodas" layoutX="14.0" layoutY="14.0" prefHeight="495.0" prefWidth="263.0" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="SimulationPane" onMouseClicked="#printClickCoords" prefHeight="599.0" prefWidth="412.0">
+         <children>
+            <AnchorPane layoutY="4.0">
+               <children>
+                  <Pane fx:id="wraper">
+                     <children>
+                        <ImageView fx:id="zemelapis" fitHeight="495.0" fitWidth="401.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+            <Slider fx:id="simuliacijosGreitis" layoutX="69.0" layoutY="546.0" onMouseReleased="#keistiGreiti" />
+            <Button fx:id="vykdyti" layoutX="216.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="70.0" text="Vykdyti" />
+            <Button fx:id="atstatyti" layoutX="296.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="70.0" text="Atstatyti" />
+            <Label layoutX="17.0" layoutY="568.0" prefHeight="17.0" prefWidth="189.0" text="FPS:          100                           10" />
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>

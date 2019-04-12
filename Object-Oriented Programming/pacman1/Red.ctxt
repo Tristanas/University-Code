@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Red
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Red\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Red\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=puck\ delayTimer
+comment2.target=Red(Pacman,\ int)
+comment3.params=
+comment3.target=void\ actAlive()
+comment4.params=
+comment4.target=void\ shouldTurn()
+comment5.params=puck
+comment5.target=Red(Pacman)
+comment6.params=
+comment6.target=void\ checkChaseOrRun()
+comment7.params=
+comment7.target=void\ eat()
+comment7.text=\r\n\ Eat\ or\ if\ you're\ vulnerable\ be\ eaten.\r\n
+comment8.params=
+comment8.target=void\ changeImage()
+numComments=9

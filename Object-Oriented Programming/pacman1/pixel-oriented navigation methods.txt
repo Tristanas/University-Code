@@ -1,0 +1,135 @@
+ public void act() 
+    {
+         checkForward();
+        if (!stuck) {
+            move(2); 
+            animatePuck();
+        }
+        if(getX() < 10) move(20 - getWorld().getWidth());
+        if(getX() > getWorld().getWidth() - 11) move(20 - getWorld().getWidth());
+        eat();
+        setDirection();
+    }   
+
+
+/**
+     * Patikrina, ar pikselio spalva ne juoda, 1 - juoda, tad ne siena
+     */
+    public boolean isWall(Color clr)
+    {
+        if(clr.getRed() < LIM && clr.getBlue() < LIM && clr.getGreen() < LIM)
+            return true;
+        else return false;
+    }
+    /**
+     * Patikrina klaviaturos ivesti ir patikrina, ar galima sukti, galint suka.
+     */
+    public void setDirection() 
+    {
+       
+        
+        if (gf.isKeyDown("a") || gf.isKeyDown("left")) 
+        {
+            toTurn = 3;
+            checkTurn();
+            if (corners[2] && corners [3])   {
+                direction = 3;
+                setRotation(180); 
+            }
+        }
+        if (gf.isKeyDown("s") || gf.isKeyDown("down"))
+        {
+            toTurn = 2;
+            checkTurn();
+            if (corners[2] && corners [3])  {
+                direction = 2;
+                setRotation(90); 
+            }
+        }  
+        if (gf.isKeyDown("d") || gf.isKeyDown("right")) 
+        {
+            toTurn = 1;
+            checkTurn();
+            if (corners[2] && corners [3])  {
+                direction = 1;
+                setRotation(0); 
+            }
+        } 
+        if (gf.isKeyDown("w") || gf.isKeyDown("up")){
+            toTurn = 0;
+            checkTurn();
+            if (corners[2] && corners [3])  {
+                direction = 0;
+                setRotation(270); 
+            }
+        }  
+    }
+    
+    /**
+     * Patikrina du krypties kampus ir nusprendzia, ar ten yra siena.
+     */
+    public void chooseCorner(int directionNumber, int i)
+    {
+        int x = getX(), y = getY();
+        int lengthX = getImage().getWidth(), lengthY = getImage().getHeight();
+        Color pixel;
+        
+        switch (directionNumber) {
+        case 0:
+            corners[0 + i] = isWall(getPixel(x - lengthX/2, y - 1 - lengthY/2));
+            corners[1 + i] = isWall(getPixel(x + lengthX/2, y - 1 - lengthY/2));
+            break;
+        case 1:
+            corners[0 + i] = isWall(getPixel(x + 1 + lengthX/2, y - lengthY/2));
+            corners[1 + i] = isWall(getPixel(x + 1 + lengthX/2, y + lengthY/2));
+            break;
+        case 2:
+            corners[0 + i] = isWall(getPixel(x - lengthX/2, y + 1 + lengthY/2));
+            corners[1 + i] = isWall(getPixel(x + lengthX/2, y + 1 + lengthY/2));
+            break;
+        case 3:
+            corners[0 + i] = isWall(getPixel(x - 1 - lengthX/2, y - lengthY/2));
+            corners[1 + i] = isWall(getPixel(x - 1 - lengthX/2, y + lengthY/2));
+            break;
+        }
+    }
+     /**
+     * Nustato judejimo kampu reiksmes ir patikrina, ar pacmanas istriges;
+     */
+    public void checkForward()
+    {
+        chooseCorner(direction, 0);
+        if (corners[0] && corners[1]) stuck = false;
+        else stuck = true;
+    }
+    /**
+     * Nustato sukimo kampu reiksmes, skirtas nuspresti, ar galima sukti
+     */
+    public void checkTurn()
+    {
+        chooseCorner(toTurn, 2);
+    }
+   }  
+/**
+     * Patikrina pasaulio fono spalva x ir y koordinatese
+     */
+    public Color getPixel(int x, int y) 
+    {
+      Color pixel = getWorld().getColorAt(x, y);
+      return pixel;
+    }
+    
+   
+ public void act() 
+    {
+         checkForward();
+        if (!stuck) {
+            move(2); 
+            animatePuck();
+        }
+        if(getX() < 10) move(20 - getWorld().getWidth());
+        if(getX() > getWorld().getWidth() - 11) move(20 - getWorld().getWidth());
+        eat();
+        setDirection();
+    }
+    

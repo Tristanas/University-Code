@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="386.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pankas.StatistikaController">
+   <children>
+      <Button fx:id="atgal" layoutX="442.0" layoutY="309.0" mnemonicParsing="false" onAction="#pradzion" prefHeight="67.0" prefWidth="130.0" text="Grįžti" />
+      <Button fx:id="apskaiciuotiMokesti" layoutX="486.0" layoutY="105.0" mnemonicParsing="false" onAction="#gautiMenesioMokesti" text="Apskaičiuoti" />
+      <Label layoutX="25.0" layoutY="71.0" text="Paskolos mokėjimo trukmė:" />
+      <Label fx:id="mokejimoLaikas" layoutX="188.0" layoutY="71.0" prefHeight="17.0" prefWidth="240.0" />
+      <Label layoutX="111.0" layoutY="7.0" prefHeight="40.0" prefWidth="395.0" text="Paskolos mokėjimo informacija">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="mokestisMetai" layoutX="133.0" layoutY="113.0" prefHeight="25.0" prefWidth="51.0" promptText="Metai" />
+      <TextField fx:id="mokestisMenesiai" layoutX="200.0" layoutY="113.0" prefHeight="25.0" prefWidth="58.0" promptText="Mėnesis" />
+      <Label layoutX="25.0" layoutY="117.0" prefHeight="17.0" prefWidth="119.0" text="Mėnesio mokestis" />
+      <Label layoutX="26.0" layoutY="145.0" prefHeight="17.0" prefWidth="44.0" text="Suma:" />
+      <Label layoutX="25.0" layoutY="198.0" text="Skaičiuoti sumas intervale:" />
+      <TextField fx:id="intervalasNuoMetai" layoutX="204.0" layoutY="194.0" prefHeight="25.0" prefWidth="51.0" promptText="Metai" />
+      <TextField fx:id="intervalasNuoMenesiai" layoutX="263.0" layoutY="194.0" prefHeight="25.0" prefWidth="58.0" promptText="Mėnesis" />
+      <Label layoutX="174.0" layoutY="198.0" text="nuo" />
+      <Label layoutX="329.0" layoutY="198.0" text="iki" />
+      <TextField fx:id="intervalasIkiMenesiai" layoutX="407.0" layoutY="194.0" prefHeight="25.0" prefWidth="58.0" promptText="Mėnesis" />
+      <TextField fx:id="intervalasIkiMetai" layoutX="348.0" layoutY="194.0" prefHeight="25.0" prefWidth="51.0" promptText="Metai" />
+      <Label layoutX="25.0" layoutY="222.0" text="Rezultatai:" />
+      <Label fx:id="menesioMokestis" layoutX="68.0" layoutY="145.0" prefHeight="17.0" prefWidth="188.0" />
+      <Button fx:id="apskaiciuotiIntervala" layoutX="486.0" layoutY="194.0" mnemonicParsing="false" onAction="#gautiIntervaloImokas" text="Apskaičiuoti" />
+      <Label fx:id="intervaloMenesiuImokos" alignment="TOP_LEFT" layoutX="97.0" layoutY="222.0" prefHeight="88.0" prefWidth="467.0" wrapText="true" />
+      <Label layoutX="25.0" layoutY="358.0" text="Intervalo gale lieka sumoketi:" />
+      <Label fx:id="intervaloPabaigosLikutis" layoutX="182.0" layoutY="358.0" prefHeight="17.0" prefWidth="163.0" />
+      <Button fx:id="saugotiDokumente" layoutX="301.0" layoutY="309.0" mnemonicParsing="false" onAction="#saugotiDokumente" prefHeight="67.0" prefWidth="130.0" text="Išsaugoti intervalo įmokas dokumente" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="parodytiMokejimoLaika" layoutX="486.0" layoutY="67.0" mnemonicParsing="false" onAction="#parodytiTrukme" prefHeight="25.0" prefWidth="81.0" text="Parodyti" />
+      <Label layoutX="25.0" layoutY="334.0" text="Sumokėta kredito:" />
+      <Label layoutX="25.0" layoutY="310.0" text="Sumokėta palūkanų:" />
+      <Label fx:id="intervaloKreditoSuma" layoutX="182.0" layoutY="334.0" prefHeight="17.0" prefWidth="130.0" />
+      <Label fx:id="intervaloPalukanuSuma" layoutX="182.0" layoutY="310.0" prefHeight="17.0" prefWidth="130.0" />
+   </children>
+</AnchorPane>

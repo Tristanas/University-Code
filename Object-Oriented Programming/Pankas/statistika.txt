@@ -1,0 +1,10 @@
+Paskolos duomenys:
+Suma: 14000
+Trukme: 10 m. 0 men.
+Procentai: 3.0%
+Paskolos tipas: Anuitetas
+Menesines imokos intervale 3 m. 0 men. ir 4 m. 0 men.:
+
+109.54 + 25.64 eur; 109.82 + 25.37 eur; 110.09 + 25.09 eur; 110.37 + 24.82 eur; 110.65 + 24.54 eur; 110.92 + 24.26 eur; 
+111.2 + 23.98 eur; 111.48 + 23.7 eur; 111.76 + 23.42 eur; 112.04 + 23.14 eur; 112.32 + 22.86 eur; 112.6 + 22.58 eur; 
+112.89 + 22.3 eur; 

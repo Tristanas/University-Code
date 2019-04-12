@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="279.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pankas.PradziaController">
+   <children>
+      <Label alignment="CENTER" layoutX="146.0" layoutY="14.0" text="Paskolos skaičiuoklė:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="registracija" layoutX="45.0" layoutY="110.0" mnemonicParsing="false" onAction="#registracijon" prefHeight="137.0" prefWidth="202.0" text="Nustatyti paskolos duomenis" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="statistika" layoutX="275.0" layoutY="110.0" mnemonicParsing="false" onAction="#statistikon" prefHeight="137.0" prefWidth="192.0" text="Rodyti mokėjimo planą" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="45.0" layoutY="60.0" prefHeight="50.0" prefWidth="419.0" text="Nustatę paskolos duomenis galite patikrinti mokėjimo planą ir rinktis keisti paskolą." textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
