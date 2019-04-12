@@ -39,7 +39,7 @@ int main()
     
     for (startingNode = 0; startingNode < numberOfNodes && !foundCycle; startingNode++) {
     	printf("####################\n");
-        printf("Kaip pradine node i steka buvo ideta %d \n", startingNode);
+        printf("As a starting node, %d was added to the stack \n", startingNode);
     	printf("####################\n");
         for (i = 0; i < numberOfNodes; i++) {
             road[i] = 0;
