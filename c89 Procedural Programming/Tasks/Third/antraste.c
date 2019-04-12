@@ -2,7 +2,8 @@
 #include <string.h>
 #include "antraste.h"
 
-//Takes a string consisting of words and alters it wherever the last letter of a word matches the first of the following word. Words are connected, as in the separating whitespace is removed and the first letter of the second word is omitted.
+//Connects each pair of neighboring words if the first word ends with the same letter as the second one's first letter.
+//"Words sharing general letters or not" shall become "Wordsharingeneraletters or not"
 void JoinWords(char *inputString, char *resultString)
 {
 	//An array of bytes indicating which chars of the input string are whitespace.

@@ -3,9 +3,8 @@ Requirements:
 2. Writing separate functions which:
 	a) Create an empty linked list;
 	b) Insert a new element at any point of the linked list;
-	c) Remove an element by its index;
-	d) Delete the linked list;
-	e) Alter the linked list based on the task description.
+	c) Delete the linked list;
+	d) Alter the linked list based on the task description.
 3. Use of structs and memory allocation.
 4. Use of "free" method to reduce the amount of used memory once something won't be used anyore.
 5. Write code using your own coding standard written in a text file.

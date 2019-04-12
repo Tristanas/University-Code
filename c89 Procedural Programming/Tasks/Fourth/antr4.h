@@ -1,6 +1,12 @@
 #ifndef antr
 #define antr
 
+#include <malloc.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+//Each link stores a int type number and points to the next link.
+
 struct link {
 	int number;
 	struct link *nextLink;
@@ -8,7 +14,7 @@ struct link {
 
 void print_list(struct link *head);
 int push_front(struct link **dabartine, int value);
-void rewrite_list(struct link **head); 
+void rewrite_list(struct link **head);
 void delete_list(struct link **head);
 int push_back(struct link **head, int value);
 int find_min(struct link *head);

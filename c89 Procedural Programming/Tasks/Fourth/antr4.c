@@ -1,13 +1,6 @@
-#include <malloc.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "antr4.h"
 
-//Each link stores a int type number and points to the next link.
-struct link {
-	int number;
-	struct link *nextLink;
-};
-
+//Reverses the order of list elements. First becomes last, second becomes next-to-last and so on.
 void rewrite_list(struct link **head)
 {
 	struct link *current = *head;
@@ -28,6 +21,7 @@ void rewrite_list(struct link **head)
 	*head = previous;
 }
 
+//Prints all the members of a linked-list each separated by a space.
 void print_list(struct link *head)
 {
 	printf("Here's the list: \n");
@@ -38,6 +32,7 @@ void print_list(struct link *head)
 	printf("\n");
 }
 
+//Puts a new link at the start of the list. The list head changes.
 int push_front(struct link **listPointer, int value)
 {
 	struct link *tmp;
@@ -55,6 +50,7 @@ int push_front(struct link **listPointer, int value)
 	}//strukturinis pointeris yra sukurto elemento adresas
 	return 0;
 }
+//Puts a new link at the end of the list. If the head was null, the new link becomes the head.
 int push_back(struct link **head, int value)
 {
 	struct link *list = *head;
@@ -73,6 +69,7 @@ int push_back(struct link **head, int value)
 	}
 	return 0;
 }
+//Deletes the list by iterating through it and deleting each link.
 void delete_list(struct link **head)
 {
 	struct link *tmp = *head;
@@ -84,6 +81,7 @@ void delete_list(struct link **head)
 	}
 	*head = NULL;
 }
+//Iterates through the list and finds the highest value.
 int find_max(struct link *head)
 {
 	int max;
@@ -98,6 +96,7 @@ int find_max(struct link *head)
 	}
 	return max;
 }
+//Iterates through the list and finds the smallest value.
 int find_min(struct link *head)
 {
 	int min;
@@ -112,6 +111,8 @@ int find_min(struct link *head)
 	}
 	return min;
 }
+//Adds a new link to the linked list at a certain position. Front is position 1.
+//If the given position is bigger than the size of the linked-list, then the link is put at the back.
 int insert(struct link **head, int position, int value)
 {
 	struct link *tmp = *head;
@@ -136,8 +137,3 @@ int insert(struct link **head, int position, int value)
 	}
 	return 0;
 }
-
-
-
-
-
