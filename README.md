@@ -8,5 +8,6 @@ This is a repository for my previous and current study projects. And there have 
  * Database management systems (PostgreSQL and some c with embedded SQL),
  * Computer networks (c and other languages, a section of the CCNA course).
  * Software engineering part 1 (design of a system, in practice lectures we created a prototype, design and requirements specification, domain analysis) - check out <https://github.com/TMikna/Project-Man>
+ * Software engineering part 2 (ICONIX process, software testing and maintenance basics, introduction into project management and software lifecycles)
  
  Most projects will stay as they were during the assessment. I will return to some projects and improve them either by increasing efficiency, expanding functionality or refactoring.

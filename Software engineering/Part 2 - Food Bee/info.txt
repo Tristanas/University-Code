@@ -1,0 +1,20 @@
+Software engineering part 2:
+
+We learned about the ICONIX software process. 
+The course covered:
+1. Requirements engineering (user stories for example),
+2. Robustness analysis (useful when designing the interface), 
+3. Project review, 
+4. Project implementation processes (detailed design, software implementation, testing - V model),
+5. Project maintenance,
+6. Introduction into project management and software lifecycles.
+
+During the practices we implemented our peers project while following the ICONIX process:
+1. Requirements review,
+2. Preliminary design review (including robustness analysis),
+3. Detailed design review,
+4. Deployment (implementation).
+
+We worked on a single document in several increments.
+Source code available on our Github repository:
+https://github.com/Tristanas/PSI2-Food-Bee-Inc
