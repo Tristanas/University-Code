@@ -1,5 +1,5 @@
 # University-Code
-This is a repository for my previous and current study projects. And there have been various topics: 
+This is a repository for my previous study projects. Over the semesters we have covered many topics which required us to write code: 
 
 Semester 1:
  * Procedural Programming (c89), 
@@ -19,19 +19,20 @@ Semester 1:
  * Software engineering part 2 (ICONIX process, software testing and maintenance basics, introduction into project management and software lifecycles),
  
  Semester 5:
- * Internet technologies (XML, JSON, XML schema, Xpath, HTTP, CSS, DOM, JQuery, JavaScript),
- * Logical programming (Prolog statements, queries, structures, algorithms, implementation of prolog),
- * Software creation (Software process, technologies, team project source code here <https://github.com/tesa4436/projectmayhem>, personal project here <https://github.com/Tristanas/PSK-TP>),
+ * Web Programming (XML, JSON, XML schema, Xpath, HTTP, CSS, DOM, JQuery, JavaScript),
+ * Logic programming (Prolog statements, queries, structures, algorithms, implementation of prolog),
+ * Software design (design patterns, packages and complexity management, more info here <https://github.com/Tristanas/PS-projektavimas>),
+ * Numerical methods (implementing mathematical algorithms with Matlab: matrices, interpolation, approximation, linear and differential equations),
  
  Semester 6:
- * Numerical methods (implementing mathematical algorithms with Matlab: matrices, interpolation, approximation, linear and differential equations),
- * Software design (design patterns, packages and complexity management, more info here <https://github.com/Tristanas/PS-projektavimas>),
+ * Software Development (Software process, technologies, team project source code here <https://github.com/tesa4436/projectmayhem>, personal project here <https://github.com/Tristanas/PSK-TP>),
+ * Financial intelligence (Introduction to market concepts, market analysis, portfolio management and trading strategies)
  
  Semester 7:
  * Programming with Windows API (Windows OS overview and application development with c++),
- * Optimisation methods (implementing algorithms with Matlab to solve optimisation tasks),
+ * Optimization methods (implementing algorithms with Matlab to solve optimization problems),
  * Parallel programming (Open multi-processing, Message passing interface, distributed calculations),
- * Design and creation of computer games (with Unity, team project here: <https://github.com/ManfredasSiu/Voztuvas-GameDev>)
+ * Video Game Design and Development (with Unity, team project here: <https://github.com/ManfredasSiu/Voztuvas-GameDev>)
  
  Course work - check out this repository: <https://github.com/Tristanas/DSL-Edu>
  
