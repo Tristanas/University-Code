@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PrekybosCentras Pavadinimas="Ozas"
+	xmlns="https://prekybos-centrai.lt"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:nauja="atsidarymas"
+	xsi:schemaLocation="https://prekybos-centrai.lt pc-schema.xsd">
+  <KinoTeatras Pavadinimas="Multikino" Sales="11">
+    <Tvarkarastis>
+      <Filmas Pavadinimas="Kersytojai" Sale="1A" Laikas="18:00" />
+      <Filmas Pavadinimas="Juokdarys" Sale="4A" Laikas="16:10" />
+      <Filmas Pavadinimas="Kambarys" Sale="2B" Laikas="23:15" />
+      <Filmas Pavadinimas="Kingsmenai" Sale="2A" Laikas="18:15" />
+      <Filmas Pavadinimas="Iksmenai, Fenikso pakilimas" Sale="1A" Laikas="15:20 21:00 23:59" />
+    </Tvarkarastis>
+  </KinoTeatras>
+  <Parduotuve Pavadinimas="Baikerama" Tipas="Drabuziai ir laisvalaikis">
+    <Prekes>
+      <Preke Kaina="8.50">Akiniai nuo saules</Preke>
+      <Preke Kaina="399.99">Baikerio striuke</Preke>
+      <Preke Kaina="99.99">Baikerio batai</Preke>
+      <Preke Kaina="199.99">Baikerio dzinsai</Preke>
+      <Preke Kaina="9999.99">Baikerio motociklas</Preke>
+    </Prekes>
+    <Reklama Galioja-Iki="2019-11-04" Nuolaida="50%" Kaina="8.50">Akiniai nuo saules</Reklama>
+  </Parduotuve>
+  <Restoranas Pavadinimas="Mao">
+    <Meniu>
+      <Valgis Pavadinimas="Guobao" Kaina="4.20" />
+      <Valgis Pavadinimas="Traski astri vistiena" Kaina="4.00" />
+      <Valgis Pavadinimas="Ramen" Kaina="3.00" />
+      <Valgis Pavadinimas="Juros Blogybes" Kaina="8.50" />
+      <Gerimas Pavadinimas="Cola 0.5L" Kaina="1.90" />
+      <Gerimas Pavadinimas="Arbata 1L" Kaina="2.50" />
+    </Meniu>
+  </Restoranas>
+  <Restoranas Pavadinimas="KFC" >
+    <Meniu>
+      Valgiai:
+      <Valgis Pavadinimas="Vistienos kibiras" Kaina="8.50" />
+      <Valgis Pavadinimas="Smarsteris" Kaina="1.20" />
+      <Valgis Pavadinimas="Vistienos Mesainis" Kaina="2.90" />
+      Gerimai:
+      <Gerimas Pavadinimas="Cola 0.5L" Kaina="1.80" />
+      <Gerimas Pavadinimas="Sprite 0.5L" Kaina="2.60" />
+    </Meniu>
+  </Restoranas>
+  <nauja:Restoranas nauja:Pavadinimas="Rastaranas" nauja:Virtuve="Lotynu Amerika" nauja:Atsidarys="2020-01-13" />
+  <Parduotuve Pavadinimas="Lidl" xmlns="universaline-parduotuve">
+    <Skyriai>
+      <Skyrius Pavadinimas="Prie Skonio" >
+        <PrekesTipas Pavadinimas="Padazai" Nuolaida="25%" />
+        <PrekesTipas Pavadinimas="Aliejus" Nuolaida="" />
+        <PrekesTipas Pavadinimas="Pipirai" Nuolaida="10%" />
+      </Skyrius>
+      <Skyrius Pavadinimas="Vaikams" >
+        <PrekesTipas Pavadinimas="Kamuoliai" Nuolaida="50%" />
+        <PrekesTipas Pavadinimas="Pliusiniai zaislai" Nuolaida="" />
+        <PrekesTipas Pavadinimas="Veiksmo figureles" Nuolaida="25%" />
+        <PrekesTipas Pavadinimas="Masineles" Nuolaida="40%" />
+      </Skyrius>
+    </Skyriai>
+  </Parduotuve>
+</PrekybosCentras>

@@ -1,0 +1,147 @@
+{
+  "PrekybosCentras": {
+    "Pavadinimas": "Ozas",
+    "KinoTeatras": {
+      "Pavadinimas": "Forum Cinemas",
+      "Sales": 11,
+      "Tvarkarastis": {
+        "Filmai": [
+          {
+            "Pavadinimas": "Kersytojai",
+            "Sale": "1A",
+            "Laikas": "18:00"
+          },
+          {
+            "Pavadinimas": "Juokdarys",
+            "Sale": "4A",
+            "Laikas": "18:00"
+          },
+          {
+            "Pavadinimas": "Kambarys",
+            "Sale": "2B",
+            "Laikas": "18:00"
+          },
+          {
+            "Pavadinimas": "Kingsmenai",
+            "Sale": "2A",
+            "Laikas": "18:00"
+          },
+          {
+            "Pavadinimas": "Iksmenai Fenikso pakilimas",
+            "Sale": "1A",
+            "Laikas": "18:00"
+          }
+        ]
+      }
+    },
+    "UniversalineParduotuve": {
+      "Pavadinimas": "Lidl",
+      "Skyriai": [
+        {
+          "Pavadinimas": "Prie Skonio",
+          "PrekesTipai": [
+            {
+              "Pavadinimas": "Padazai",
+              "Nuolaida": "25%"
+            },
+            {
+              "Pavadinimas": "Aliejus",
+              "Nuolaida": ""
+            },
+            {
+              "Pavadinimas": "Pipirai",
+              "Nuolaida": "10%"
+            }
+          ]
+        },
+        {
+          "Pavadinimas": "Vaikams",
+          "PrekesTipai": [
+            {
+              "Pavadinimas": "Kamuoliai",
+              "Nuolaida": "50%"
+            },
+            {
+              "Pavadinimas": "Pliusiniai zaislai",
+              "Nuolaida": ""
+            },
+            {
+              "Pavadinimas": "Veiksmo figureles",
+              "Nuolaida": "25%"
+            },
+            {
+              "Pavadinimas": "Masineles",
+              "Nuolaida": "40%"
+            }
+          ]
+        }
+      ]
+    },
+    "Restoranai": [
+      {
+        "Pavadinimas": "Mao",
+        "Meniu": [
+          {
+            "Pavadinimas": "Guobao",
+            "Kaina": 4.20
+          },
+          {
+            "Pavadinimas": "Traski astri vistiena",
+            "Kaina": 4.00
+          },
+          {
+            "Pavadinimas": "Ramen",
+            "Kaina": 3.00
+          },
+          {
+            "Pavadinimas": "Cola 0.5L",
+            "Kaina": 1.90
+          },
+          {
+            "Pavadinimas": "Arbata 1L",
+            "Kaina": 2.50
+          }
+        ]
+      },
+      {
+        "Pavadinimas": "KFC",
+        "Meniu": [
+          {
+            "Pavadinimas": "Vistienos kibiras",
+            "Kaina": 8.50
+          },
+          {
+            "Pavadinimas": "Smarsteris",
+            "Kaina": 1.20
+          },
+          {
+            "Pavadinimas": "Vistienos Mesainis",
+            "Kaina": 2.90
+          },
+          {
+            "Pavadinimas": "Cola 0.5L",
+            "Kaina": 1.80
+          },
+          {
+            "Pavadinimas": "Arbata 1L",
+            "Kaina": 2.60
+          }
+        ]
+      }
+    ],
+    "NaujosErdves": [
+      {
+        "Tipas": "Restoranas",
+        "Pavadinimas": "Rastaranas",
+        "Virtuve": "Lotynu Amerika",
+        "Atsidarys": "2020-01-13"
+      },
+      {
+        "Tipas": "Parduotuve",
+        "Pavadinimas": "Kadmandu",
+        "Prekes": "Technologijos",
+        "Atsidarys": "2020-01-13"
+      }
+    ]
+  }
+}

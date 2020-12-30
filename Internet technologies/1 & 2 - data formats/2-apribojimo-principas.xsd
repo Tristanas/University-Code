@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:nauja="http://https://www.akropolis.lt/lt/vilnius/pc-planas/atsidarymas"
+	xmlns:universaline="universaline-parduotuve">
+	
+	<!-- Apribojimo principas: apribotas tipas turi atitikti bazinį tipą. 
+	Su apribotu tipu turi būti galima sumodeliuoti bazinio tipo objektą.-->
+  <xs:simpleType name="produkto-tipas">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="2" />
+      <xs:maxLength value="100" />
+      <xs:pattern value="^[A-Z][a-z]*( [a-zA-z][a-z]*)*$" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="prekes-tipas">
+		<xs:simpleContent>
+			<xs:extension base="produkto-tipas">
+				<xs:attribute name="Kaina" type="xs:number" use="required" />
+				<xs:attribute name="Nuolaida" type="xs:number" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="nemokamos-prekes-tipas">
+		<xs:simpleContent>
+			<xs:restriction base="prekes-tipas">
+				<xs:attribute name="Kaina" use="prohibited" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
+
+<!-- Pataisymas:
+	<xs:complexType name="prekes-tipas">
+		<xs:simpleContent>
+			<xs:extension base="produkto-tipas">
+				<xs:attribute name="Kaina" type="xs:number" use="optional" />
+				<xs:attribute name="Nuolaida" type="xs:number" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	nemokamos prekės tipas apibrėžiamas kaip anksčiau.-->
+	

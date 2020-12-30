@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>SEO CEO Dio</title>
+    <link rel="stylesheet" href="author-style.css" type="text/css" />
+    <script src="dom-scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Home page - where your abc lives.</h1>
+        <p>
+            Ain't no other place like home. Ain't no other page like home page.
+            Set your home page to our search engine!
+        </p>
+    </header>
+
+    <h1>Search engines rock!</h1>
+
+    <section>
+        <h2>Data binding example:</h2>
+        <article>
+            <h4>Input your name here to get a personal greeting.</h4>
+            Name: <input id="name-input" type="text" name="my-name" onchange="changeParagraphText(this)" /><br />
+            <p id="name-paragraph">Welcome Mr/Mrs to our website!</p>
+        </article>
+
+        <h2>Fill out this form to start using a search engine!</h2>
+        <article>
+            <h3>Oraclesque download form:</h3>
+            Got more names? Click this button! <br />
+            <button onclick="addMoreNames()">Click me for a new name!</button>
+            <button onclick="removeLatestName()">Undo</button>
+            <form name="bad-search-engine-bad-form">
+                <span id="names">
+                    First name: <input id="first-name" type="text" name="name" /><br>
+                </span>
+                Last name: <input id="last-name" type="text" name="last-name" /><br>
+                Title: <input type="text" name="title" /><br>
+                Company: <input type="text" name="company" /><br>
+                Position: <input type="text" name="position" /><br>
+                Company Address: <input type="text" name="address1" /><br>
+                Personal Address: <input type="text" name="address2" /><br>
+                Date of birth: <input type="text" name="birthday" onchange="checkDateCorrect(this)" /><br>
+                Email: <input onchange="checkEmpty(this)" type="email" name="email" /><br>
+                Further communication secret: <input type="password" name="secret" onchange="secretChanges(this)" /><br>
+                I agree to be further bamboozled: <input type="checkbox" name="consent" /><br>
+                I search this frequently (times/day): <input type="text" name="Paieskos daznis" onchange="checkPositiveInteger(this)" /><br>
+                Please select your second most liked search engine, so that we can suggest you use it in case download fails:
+                <select size="1" name="alternative" onclick="filterTable(this)">
+                    <option value="Google">Google</option>
+                    <option value="Yahoo">Yahoo</option>
+                    <option value="Bing">Bing</option>
+                    <option value="Bong">Bong</option>
+                    <option value="BingBingBong">BingBingBong</option>
+                </select><br />
+                <input type="submit" value="Download" />
+                <input type="reset" value="Clean" />
+            </form>
+        </article>
+
+        <h2>Become a patron!</h2>
+        <article>
+            <h3>Form:</h3>
+            <form action="/action_page.php">
+                First name: <input id="name" type="text" name="name" required /><br>
+                Last name: <input id="last-name" type="text" name="last-name" /><br>
+                <input type="submit" />
+                <input type="reset" value="Clean" />
+            </form>
+			<form action="/action_page.php" method="post">
+			  <label for="username">Username:</label>
+			  <input type="text" id="username" name="username" required>
+			  <input type="submit">
+			</form>
+
+        </article>
+
+        <h2>Patrons:</h2>
+        <article>
+            <h3>Thanks to our latest patron:</h3>
+            <p id="latest-patron"></p>
+            <h3>Patrons members table:</h3>
+            <table id="patrons">
+                <tr>
+                    <th>ID</th>
+                    <th>Vardas</th>
+                    <th>Pavarde</th>
+                </tr>
+            </table>
+        </article>
+        
+        <h2>Here's a list of actual search engines</h2>
+        <article>
+            <h3>Table of less awful search engines:</h3>
+            <table id="browsers">
+                <tr>
+                    <th rowspan="2">Name</th>
+                    <th rowspan="2">Language</th>
+                    <th rowspan="2">Alexa global ranking</th>
+                    <th colspan="2">Users</th>
+                </tr>
+
+                <tr>
+                    <th>In your country</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Bing</td>
+                    <td>Multilingual</td>
+                    <td>214</td>
+                    <td>5</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>Bong</td>
+                    <td>Multilingual</td>
+                    <td>173</td>
+                    <td>16</td>
+                    <td>12300</td>
+                </tr>
+                <tr>
+                    <td>BingBingBong</td>
+                    <td>Chinese</td>
+                    <td>162</td>
+                    <td>0</td>
+                    <td>1000000</td>
+                </tr>
+                <tr>
+                    <td>Yahoo</td>
+                    <td>Chinese</td>
+                    <td>96</td>
+                    <td>0</td>
+                    <td>2000000</td>
+                </tr>
+                <tr>
+                    <td>Google</td>
+                    <td>English</td>
+                    <td>1946</td>
+                    <td>150</td>
+                    <td>150</td>
+                </tr>
+            </table>
+        </article>
+
+        <!-- <h2>Another article with a table</h2>
+    <article>
+        <h3>A smaller, yet more interesting table. Cookies.</h3>
+        <table id="cookies">
+            <tr>
+                <th>Name</th>
+                <th>Website</th>
+                <th>Date created</th>
+                <th>Taste</th>
+            </tr>
+            <tr>
+                <td>Cookie clicker save tracker</td>
+                <td>https://cookie-clicker.com</td>
+                <td>2019-11-20</td>
+                <td>Cholocate and crispy</td>
+            </tr>
+            <tr>
+                <td>Google Identity tracker</td>
+                <td>https://google.com</td>
+                <td>1998-05-12</td>
+                <td>Humanly taste</td>
+            </tr>
+            <tr>
+                <td>Facebook commerce tracker</td>
+                <td>https://facebook.com</td>
+                <td>1998-05-12</td>
+                <td>Tastes like money</td>
+            </tr>
+            <tr hidden>
+                <td>Youtube recomended cookie</td>
+                <td>https://youtobe.com</td>
+                <td>2004-12-25</td>
+                <td>Didn't notice, watched suggestions</td>
+            </tr>
+        </table>
+    </article>-->
+    </section>
+
+    <footer>
+        <br />Vilnius, Naugarduko 47 <br />
+        +37071235412<br />
+        Vardenis Pavardenis, CEO Astromenda<br />
+        Facebook, LinkedIn, Instagram, Twitter, Youtube<br />
+    </footer>
+</body>
+</html>

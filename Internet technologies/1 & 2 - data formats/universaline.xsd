@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="universaline-parduotuve" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="universaline-parduotuve" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Parduotuve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Skyriai">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Skyrius">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="PrekesTipas">
+                      <xs:complexType>
+                        <xs:attribute name="Pavadinimas" type="xs:string" use="required" />
+                        <xs:attribute name="Nuolaida" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Pavadinimas" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Pavadinimas" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="atsidarymas" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="atsidarymas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Restoranas">
+    <xs:complexType>
+      <xs:attribute ref="tns:Pavadinimas" use="required" />
+      <xs:attribute ref="tns:Virtuve" use="required" />
+      <xs:attribute ref="tns:Atsidarys" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="Pavadinimas" type="xs:string" />
+  <xs:attribute name="Virtuve" type="xs:string" />
+  <xs:attribute name="Atsidarys" type="xs:date" />
+</xs:schema>

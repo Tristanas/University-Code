@@ -1,0 +1,61 @@
+Lab 1 bits:
+
+2. Namespace usage:
+
+xmlns:AtsidarantiErdve="http://https://www.akropolis.lt/lt/vilnius/pc-planas/atsidarymas"
+
+XPATH daliai - viskas.
+
+3. XPATH sakiniai:
+
+Unikalus žymės kelias:
+/PrekybosCentras/Parduotuve[1]/Prekes/Preke[2]
+
+1. ašių pavyzdžiai:
+attribute
+
+.../ancestor::*
+.../descendant::* - grąžina tuščią masyvą, nes prekė neturi vaikų.
+.../following-sibling::Preke - grąžina dvi prekes, nes pirma parduotuvė turi 4 prekes.
+.../preceding-sibling::Preke - grąžina 1 prekę, nes esamas mazgas yra antra prekė.
+.../following::* - grąžina ilgą sąrašą, nes daug kas seka. .../following::Preke - grąžina tik sibling prekes, nors yra kitų prekių. Kodėl?
+.../following::PrekesTipas - grąžina tuščią masyvą, kodėl?
+.../following::Patiekalas - grąžina visus patiekalus, nes Restoranai yra surašyti dokumento gale.
+.../preceding::Filmas - grąžina 5 filmus, jie yra anksčiau buvusio kino teatro vaikai.
+.../attribute::Kaina - 99.99 eur.
+
+2. Kelias su predikatu - visos prekes ir visi patiekalai, kurie kainuoja tiek, kiek akiniai nuo saules "Baikerama" parduotuveje.
+//Patiekalas[@Kaina = /PrekybosCentras/Parduotuve[1]/Prekes/Preke[1]/@Kaina]
+
+3. sum(//*) grąžina kiekvienos žymės tekstinės vertės, paverstos į skaičių, sumą. <a><b>2</b><c>3</c></a> turi tris žymes. b viduje yra "2", c viduje "3", o a viduje yra b ir c turinys - "23". sum(//*) = 23 + 2 + 3 = 28
+count((//Parduotuve)[1]/Prekes/Preke) - paima kiek prekių turi pirma parduotuvė.
+sum((//Meniu)[1]/Patiekalas/@Kaina) - grąžina restorano "Mao" meniu patiekalų suminę kainą. 24.0999999998. Kodėl toks skaičius? Tikslumo klaida sumuojant, turėtų būti 24.10.
+######################################################
+n. Po visų pakeitimų darant XPATH atnaujinti JSON.
+
+4. -, +, <, <=, >, => dirba tik su skaičiais. Jei argumentas ne skaičius, tai yra automatiškai konvertuojamas į skaičių. 
+ =, != dirba su visais tipais. Jei =, != bent vienas operandas yra loginis, tai vykdoma boolean palyginimas. Kitaip lyginami skaičiai. Jei abu operandai yra eilutės, lyginamos eilutės.
+
+(//Patiekalas)[1]/@Pavadinimas = true() jei lygini eilutę su true(), eilutė konvertuojama į loginį tipą. Jei ji netuščia, yra lygi true.
+(//PrekesTipas/@Nuolaida)[1] < 30 grąžina false, nes nuolaidas užrašiau su "%" ženklu gale. Eilutė yra konvertuojama į skaičių, gaunasi NaN.
+(//Preke)[1]/text() + (//Patiekalas/@Kaina)[1] NAN, prekės pavadinimas konvertuojamas į skaičių ir gauname nan.
+
+5. 
+(//Patiekalas[../../@Pavadinimas = "Mao"])[4]/preceding-sibling::Patiekalas/@Kaina - pirmu triju Mao patiekalu kainos
+sum(//Patiekalas/@Kaina) div count(//Patiekalas/@Kaina) vidutine visu restoranu patiekalu kaina.
+
+Veikiantis variantas:
+(//Patiekalas[../../@Pavadinimas = "Mao"])[4]/preceding-sibling::Patiekalas[@Kaina > sum(//Patiekalas/@Kaina) div count(//Patiekalas/@Kaina)]/@Pavadinimas
+Grąžina pavadinimus pirmų 3 Mao patiekalų, kurių kainos didesnės nei vidutinė PC restoranų patiekalų kaina.
+Vidutinė kaina 3.70 eur.
+
+6.
+I) //@Kaina = 2.90 - true, nes yra preke, kuri kainuoja tiek.
+II) //Filmas/@Pavadinimas = "Tristanas" - false, nes nera tokio filmo.
+III) //PrekesTipas/@Nuolaida = true() - true, nes yra prekiu, kurioms yra taikomos nuolaidos.
+Kad patikrintume, ar yra prekiu, kurioms netaikomos nuolaidos, reikia ieškoti, ar yra nuolaida = ""
+IV) (//Meniu)[1]/Patiekalas/@Kaina = (//Meniu)[2]/Patiekalas/@Kaina - ar yra patiekalų, kurie kainuoja tiek pat? Grąžina true, nes jūros blogybės kainuoja tiek pat kiek vištienos kibiras.
+
+7.
+(//Meniu)[1]/Patiekalas/@Kaina > //Parduotuve[@Pavadinimas = "Baikerama"]/descendant::*/@Kaina
+Grąžina false, nes nėra nei vieno patiekalo, kuris būtų brangesnis už bent vieną "Baikerama" prekę.

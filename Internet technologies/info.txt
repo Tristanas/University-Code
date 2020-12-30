@@ -1,0 +1,18 @@
+Information technologies:
+
+During the course we learned about various Internet protocols and how to use them:
+1. Information formats: JSON and XML.
+2. JSON and XML schema - how the structure and meaning of files is described.
+3. Xpath - how XML documents (and web pages) can be navigated and analized.
+4. Website protocols and technologies: HTML (specialized page definition language) and CSS (define styles for page elements)
+5. Javascript and interaction with the DOM - document object model.
+
+During the course we had 4 practical tasks:
+1. Describe the same entity via XML and JSON formats (I chose a shopping center)
+2. Define the XML and JSON schemas for the entity.
+3. Create a webpage, which cointains a specific set of HTML elements and CSS styles.
+4. Add interaction to the web page via Javascript and JQuery.
+
+To do:
+1. Review the web page tasks,
+2. Refactor and translate the XPath bits.

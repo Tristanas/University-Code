@@ -1,0 +1,66 @@
+body {
+	margin: 25px;
+	background-color: lightblue;
+	font-family: arial, sans-serif;
+	font-size: 14px;
+}
+
+@media screen and (min-width: 800px) {
+	body {
+		background-color: lightgray;
+	}
+}
+
+h1, h2 {
+	font-family:Calibri;
+	color:darkred
+}
+article {
+	display:block
+}
+td, th, table {
+	border:solid;
+	border-width: 2px;
+	border-color:lightseagreen
+}
+
+th[rowspan="2"] {
+	border-color: blue
+}
+
+p.citation {
+	font-size: 80%;
+	font-style:italic;
+	color:gray;
+	margin-left: 60px;
+	border-left:solid;
+	padding-left: 15px;
+	width: 600px;
+}
+
+#special {
+	color: #006635 !important;
+	font-style: italic;
+}
+
+p.negative {
+	color: red !important;
+}
+
+ul li {
+	font-size: 100% !important;
+}
+
+li.special-li {
+	font-size: 140%;
+	color: #004400;
+}
+
+form > input {
+	margin: 2px 0px 2px 0px
+}
+
+form > input:hover {
+	color: #330066;
+	background-color: lightyellow;
+}

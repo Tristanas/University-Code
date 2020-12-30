@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "data": {
+      "type": "string",
+      "pattern": "[01]{4}-(0[1-9]|1[12])-(0[1-9]|[12][0-9]|3[01])"
+    },
+    "pavadinimo-tipas": {
+      "type": "string",
+      "pattern": "^[A-Z][a-z]*( [a-zA-z0-9.]*)*$",
+      "minLength": 5
+    },
+    "kainos-tipas": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMinimum": true
+    },
+    "prekes-tipas": {
+      "type": "object",
+      "properties": {
+        "Kaina": { "$ref": "#/definitions/kainos-tipas" },
+        "Pavadinimas": { "$ref": "#/definitions/pavadinimo-tipas" }
+      },
+      "required": [ "Kaina", "Pavadinimas" ]
+    },
+    "naujas-restoranas": {
+      "type": "object",
+      "properties": {
+        "Tipas": { "enum": [ "Restoranas" ] },
+        "Virtuve": { "type": "string" }
+      }
+    },
+    "nauja-parduotuve": {
+      "type": "object",
+      "properties": {
+        "Tipas": { "enum": [ "Parduotuve" ] },
+        "Prekes": { "enum": [ "Batai", "Drabuziai", "Technologijos", "Baldai" ] }
+      }
+    },
+    "nauja-erdve": {
+      "type": "object",
+      "properties": {
+        "Pavadinimas": { "type": "string" },
+        "Atsidarys": { "type": "string" }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "PrekybosCentras": {
+      "type": "object",
+      "properties": {
+        "Pavadinimas": { "type": "string" },
+        "KinoTeatras": {
+          "type": "object",
+          "properties": {
+            "Pavadinimas": {
+              "type": "string"
+            },
+            "Sales": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "Filmai": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Pavadinimas": { "type": "string" },
+                  "Sale": { "enum": [ "1A", "1B", "2A", "2B", "3A", "4A" ] },
+                  "Laikas": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "UniversalineParduotuve": {
+          "type": "object",
+          "properties": {
+            "Pavadinimas": { "type": "string" },
+            "Skyriai": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Pavadinimas": { "type": "string" },
+                  "PrekesTipai": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Pavadinimas": { "type": "string" },
+                        "Nuolaida": { "type": "string" }
+                      },
+                      "required": [ "Pavadinimas" ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Restoranai": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Pavadinimas": { "type": "string" },
+              "Meniu": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/prekes-tipas" }
+              }
+            }
+          }
+        },
+        "NaujosErdves": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/nauja-erdve" },
+              {
+                "oneOf": [
+                  { "$ref": "#/definitions/nauja-parduotuve" },
+                  { "$ref": "#/definitions/naujas-restoranas" }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "required": [ "Pavadinimas", "UniversalineParduotuve", "Restoranai"]
+    }
+  }
+}
