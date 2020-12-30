@@ -1,0 +1,5 @@
+Results:
+Easiest: 1.34
+Easy: 33.04
+Medium: 99.92
+Hard: -1.00

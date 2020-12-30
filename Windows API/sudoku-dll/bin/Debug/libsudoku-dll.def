@@ -1,0 +1,7 @@
+EXPORTS
+    CheckBoard @1
+    CheckColumn @2
+    CheckRow @3
+    CheckSquare @4
+    DllMain @5
+    SomeFunction @6

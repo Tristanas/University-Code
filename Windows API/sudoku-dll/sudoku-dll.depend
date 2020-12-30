@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1608754698 source:c:\users\vilius\documents\sem 7\wapi\sudoku-dll\main.cpp
+	"main.h"
+	<windows.h>
+	<ctype.h>
+	<windowsx.h>
+
+1608754653 c:\users\vilius\documents\sem 7\wapi\sudoku-dll\main.h
+	<windows.h>
+

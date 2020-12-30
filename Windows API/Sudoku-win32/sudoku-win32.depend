@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1608157647 source:c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\main.cpp
+	<tchar.h>
+	<windows.h>
+	<wincodec.h>
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<richedit.h>
+	"menu.h"
+	"sudoku.h"
+	"learning.h"
+
+1608156982 source:c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\menu.rc
+	"menu.h"
+
+1608156888 c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\menu.h
+
+1607193914 source:c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\icons.rc
+
+1608157380 c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\sudoku.h
+
+1608155782 c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\learning.h
+
+1608156388 source:c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\learning.cpp
+	"menu.h"
+	<windows.h>
+	<tchar.h>
+	<windowsx.h>
+
+1608156420 source:c:\users\vilius\documents\sem 7\wapi\wapi-hello-world\sudoku.cpp
+	<windows.h>
+	<ctype.h>
+	<windowsx.h>
+
+1607193914 source:c:\users\vilius\documents\sem 7\wapi\sudoku-win32\icons.rc
+
+1608156388 source:c:\users\vilius\documents\sem 7\wapi\sudoku-win32\learning.cpp
+	"menu.h"
+	<windows.h>
+	<tchar.h>
+	<windowsx.h>
+
+1608839732 c:\users\vilius\documents\sem 7\wapi\sudoku-win32\menu.h
+
+1608839775 source:c:\users\vilius\documents\sem 7\wapi\sudoku-win32\menu.rc
+	"menu.h"
+
+1608837186 source:c:\users\vilius\documents\sem 7\wapi\sudoku-win32\sudoku.cpp
+	<windows.h>
+	<ctype.h>
+	<windowsx.h>
+
+1608840200 source:c:\users\vilius\documents\sem 7\wapi\sudoku-win32\main.cpp
+	<tchar.h>
+	<windows.h>
+	<wincodec.h>
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<richedit.h>
+	<time.h>
+	<sys/time.h>
+	"menu.h"
+	"sudoku.h"
+
+1608836429 c:\users\vilius\documents\sem 7\wapi\sudoku-win32\sudoku.h
+

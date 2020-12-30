@@ -1,0 +1,25 @@
+#include "menu.h"
+
+"meniu" MENU
+BEGIN
+    POPUP "&Play"
+    BEGIN
+        MENUITEM "E&asiest", ID_EASIEST_LEVEL
+        MENUITEM "&Easy", ID_EASY_LEVEL
+        MENUITEM "&Medium", ID_MEDIUM_LEVEL
+        MENUITEM "&Hard", ID_HARD_LEVEL
+    END
+
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit", ID_FILE_EXIT
+    END
+
+    POPUP "&Scores"
+    BEGIN
+        MENUITEM "&Highscore", ID_HIGHSCORE
+    END
+END
+
+VIEW1 ICON "sample_5184×3456.ico"
+IDR_BACKGROUND_IMG BITMAP "desk-drawing-edit.bmp"
