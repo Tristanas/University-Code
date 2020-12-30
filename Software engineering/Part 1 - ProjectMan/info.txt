@@ -1,0 +1,15 @@
+Software engineering part 1.
+
+We learned about the Waterfall process. First comes domain analysis, then requirements engineering, architecture and lastly - software implementation.
+
+In practice we were tasked to design a system following a reversed waterfall:
+1. We created a prototype, (java project)
+2. Designed the system, (4+1 architecture views)
+3. Created a requirements specification, (functional, nonfunctional and interface requirements)
+4. Peformed a domain analysis. (SWOT, internal and external business analysis, business processes description and recommended scope of the system)
+
+We were required to renew previously created products (including the prototype) in case we found new entities, unexpected requirements and similar aspects of the system.
+
+Why reversed waterfall?
+- So that we would make more mistakes, do more work and understand more clearly the benefits of processes we learned about.
+- In reality, we were reluctant to update our previous products, thus our documents may be less comprehensive and precise than required.
