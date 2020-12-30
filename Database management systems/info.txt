@@ -1,0 +1,9 @@
+The course consisted of Database basics, introduction into SQL queries, database management and development.
+
+We had the following tasks:
+- Design efficient SQL queries to achieve a specific goal (result);
+- Design a domain model and database table schema (mine was a flash game website, similar to kongregate);
+- Write SQL instructions to create the designed database (create tables with their keys and restrictions, populate them with data, define triggers);
+- Implement a few use-cases that include interraction with the created database (multiple choices of language, I chose C with embedded SQL).
+
+To do: add missing queries, schemas and database management instruction files.

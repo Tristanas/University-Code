@@ -1,0 +1,393 @@
+#include <stdio.h>
+#include <string.h>
+
+void Visi_Pasiekimai();
+void SpausdintiSlapyvardziusIvesciai();
+void GautiSlapyvardiIvesciai(char *slapyvardis);
+void SpausdintiTarpa();
+void ValytiBufferi();
+void SukurtiZaidima(char* slapyvardis, char* pavadinimas, char* aprasymas, int transakcija);
+void SukurtiZaidimaSuPasiekimais(char* slapyvardis, char* pavadinimas, char* aprasymas, int transakcija);
+void IstrintiZaidima(char* slapyvardis, char* pavadinimas);
+int SpausdintiZaidimuPavadinimus(char* slapyvardis);
+void KeistiSavoIvertinimus(char* slapyvardis);
+
+EXEC SQL BEGIN DECLARE SECTION;
+	const char *target = "studentu@pgsql3.mif";
+	const char *user = "vimi4272";
+	const char passwd[15] = {0x56, 0x69, 0x6c, 0x69, 0x61, 0x73, 0x61, 0x73, 0x2d, 0x31, 0x32, 0x6d, 0x50, 0x50, 0};
+EXEC SQL END DECLARE SECTION;
+	
+int main()
+{
+	int pasirinkimas = 1;
+	char slapyvardis[21], pavadinimas[101], aprasymas[501];
+	char manoSlapyvardis[21];
+	EXEC SQL CONNECT TO :target USER :user USING :passwd;
+	SpausdintiSlapyvardziusIvesciai();
+	printf("Iveskite savo slapyvardi: \n");
+	scanf ("%[^\n]%*c", manoSlapyvardis);
+		
+	while (1)
+	{
+		printf("Iveskite skaiciu: 1. Zaidejo pasiekimams perziureti,\n 2. Sukurti nauja zaidima, 3. Sukurti zaidima su pasiekimais,\n 4. Istrinti zaidima, 5. Keisti zaidimu ivertinimus.\n 0. Uzdaryti programa \n");
+		scanf("%d%*c", &pasirinkimas);
+		switch (pasirinkimas) {
+		case 0:
+			printf("Programa baigia darba.\n");
+			return 0;
+		case 1:
+			Visi_Pasiekimai();
+			break;
+		case 2: 
+			printf("Iveskite zaidimo pavadinima: ");
+			scanf ("%[^\n]%*c", pavadinimas);
+			printf("Iveskite zaidimo aprasyma: ");
+			scanf ("%[^\n]%*c", aprasymas);
+			printf("Ivedete: %s, %s \n", pavadinimas, aprasymas);
+			SukurtiZaidima(manoSlapyvardis, pavadinimas, aprasymas, 1);
+			break;
+		case 3:
+			printf("Iveskite zaidimo pavadinima: ");
+			scanf ("%[^\n]%*c", pavadinimas);
+			printf("Iveskite zaidimo aprasyma: ");
+			scanf ("%[^\n]%*c", aprasymas);
+			printf("Ivedete: %s, %s \n", pavadinimas, aprasymas);
+			SukurtiZaidimaSuPasiekimais(manoSlapyvardis, pavadinimas, aprasymas, 0);
+			break;
+		case 4:
+			//GautiSlapyvardiIvesciai(slapyvardis);
+			if (SpausdintiZaidimuPavadinimus(manoSlapyvardis) == 0) {
+				printf("Neturite ka trinti\n");
+				break;
+			}
+			else {
+				printf("Iveskite norimo istrinti zaidimo pavadinima:\n");
+				scanf ("%[^\n]%*c", pavadinimas);
+				IstrintiZaidima(manoSlapyvardis, pavadinimas);
+				break;
+			}
+		case 5:
+			KeistiSavoIvertinimus(manoSlapyvardis);
+		}
+		
+		SpausdintiTarpa();
+		printf("Iveskite bet koki simboli, kad testumete.\n");
+		ValytiBufferi();
+		getchar();
+	}
+	EXEC SQL DISCONNECT;
+	
+	return 0;
+	
+}
+
+void KeistiSavoIvertinimus(char* slapyvardis)
+{
+		//Apibreziami duomenys uzklausai.
+	EXEC SQL BEGIN DECLARE SECTION;
+		char Pavadinimas[101];
+		char Slapyvardis[21];
+		int Vertinimas;
+		int Numeris;
+	EXEC SQL END DECLARE SECTION;
+	strcpy(Slapyvardis, slapyvardis);
+	int vertinimuKiekis = 0;
+	char pasirinkimas;
+	EXEC SQL WHENEVER SQLERROR GOTO error;
+	EXEC SQL WHENEVER NOT FOUND GOTO quit;
+	
+	EXEC SQL DECLARE VertinimuKursorius SCROLL CURSOR FOR
+	SELECT Pavadinimas, Vertinimas, Zaidimas
+	FROM ZaidimuVertinimas AS A, Zaidimas AS B
+	WHERE A.Zaidimas = B.ID AND A.Vertintojas = :Slapyvardis;
+		//Uzklausos vykdymas:
+	EXEC SQL OPEN VertinimuKursorius;
+	while ( 1 ) {
+		EXEC SQL FETCH VertinimuKursorius INTO :Pavadinimas, :Vertinimas, :Numeris;
+		printf("Zaidimas: %s, Vertinimas: %d \n", Pavadinimas, Vertinimas);
+		if (vertinimuKiekis == 0) vertinimuKiekis++;
+		
+		printf("Iveskite: K - kitam vertinimui, N - naujinti, B - baigti, M - mesti pakeitimus\n");
+		pasirinkimas:
+		pasirinkimas = getchar();
+		switch (pasirinkimas) {
+		case 'K':
+			break;
+		/*case 'P':
+			EXEC SQL FETCH PRIOR VertinimuKursorius INTO :Pavadinimas, :Vertinimas;
+			printf("Zaidimas: %d, Vertinimas: %d, %s, \n", Pavadinimas, Vertinimas);
+			goto pasirinkimas;*/
+		case 'N':
+			ivestis:
+			printf("Iveskite nauja ivertinima (1-5): \n");
+			scanf("%d", &Vertinimas);
+			if (Vertinimas <= 0 || Vertinimas > 5) {
+				printf("Neteisinga ivestis, bandykite is naujo\n");
+				goto ivestis;
+			}
+			
+				//DB lentele turi apribojima, kad vertinimas butu tarp 1 ir 5.
+			EXEC SQL UPDATE ZaidimuVertinimas
+			SET Vertinimas = :Vertinimas
+			WHERE Zaidimas = :Numeris AND Vertintojas = :Slapyvardis;
+			break;
+		case 'M':
+			goto quit;
+		case 'B':
+			goto quit;
+		default: goto pasirinkimas;
+		}
+		
+	}
+	
+	error:
+	printf( "SQL klaida: %ld,\n pranesimas: %s", SQLCODE, sqlca.sqlerrm.sqlerrmc);
+	quit:
+	if (SQLCODE >= 0) {
+		if(vertinimuKiekis == 0)printf("Nera nei vieno vertinimo \n");
+		else if (pasirinkimas == 'K') {
+			printf("Daugiau nera vertinimu. \n");
+			printf("Iveskite B darbui issaugoti, M - pakeitimu salinimui. \n");
+			ValytiBufferi(); //Isvalau ivesties bufferi, kad uztikrinciau pasirinkimo ivesti.
+			pasirinkimas = getchar();
+		}
+	}
+	EXEC SQL WHENEVER SQLERROR CONTINUE;
+	EXEC SQL WHENEVER NOT FOUND CONTINUE;
+	EXEC SQL CLOSE VertinimuKursorius;
+	if (pasirinkimas == 'B') EXEC SQL COMMIT;
+	else EXEC SQL ROLLBACK;
+	EXEC SQL CONNECT RESET;
+}
+
+void IstrintiZaidima(char* slapyvardis, char* pavadinimas)
+{
+		//Apibreziami duomenys uzklausai.
+	EXEC SQL BEGIN DECLARE SECTION;
+		char Pavadinimas[101];
+		char Slapyvardis[21];
+	EXEC SQL END DECLARE SECTION;
+	EXEC SQL WHENEVER SQLERROR SQLPRINT;
+	strcpy(Slapyvardis, slapyvardis);
+	strcpy(Pavadinimas, pavadinimas);
+		//Uzklausos vykdymas.
+	EXEC SQL DELETE FROM Zaidimas
+	WHERE Autorius = :Slapyvardis AND Pavadinimas = :Pavadinimas;
+	if (sqlca.sqlcode == 0) printf("Zaidimas sekmingai istrintas.\n");
+	else ("Zaidimo nepavyko istrinti. \n");
+	EXEC SQL COMMIT;
+}
+void SukurtiZaidima(char* slapyvardis, char* pavadinimas, char* aprasymas, int transakcija)
+{
+		//Apibreziami duomenys ivesciai.
+	EXEC SQL BEGIN DECLARE SECTION;
+		char Pavadinimas[101];
+		char Aprasymas[501] = " ";
+		char Slapyvardis[21];
+	EXEC SQL END DECLARE SECTION;
+	EXEC SQL WHENEVER SQLERROR SQLPRINT;
+	char ivestis[501];
+	strcpy(Slapyvardis, slapyvardis);
+	strcpy(Pavadinimas, pavadinimas);
+	strcpy(Aprasymas, aprasymas);
+		//Ivestis i DB.
+	EXEC SQL INSERT INTO Zaidimas (KadaSukurta, Pavadinimas, Autorius, Aprasas)
+	VALUES (CURRENT_DATE, :Pavadinimas, :Slapyvardis, :Aprasymas);
+	if (sqlca.sqlcode == 0) printf("Zaidimas sekmingai sukurtas.\n");
+	if (transakcija == 0) return;
+	EXEC SQL COMMIT;
+}
+//Funkcija zaidimo su pasiekimais sukurimui. Transakcija = 1, sukurtas zaidimas issaugomas is karto.
+//Jei lygu 0, galima rinktis, ar issaugoti zaidima su pasiekimais, be pasiekimu ar visai nesaugoti.
+void SukurtiZaidimaSuPasiekimais(char* slapyvardis, char* pavadinimas, char* aprasymas, int transakcija)
+{
+		//Duomenu apibrezimas pasiekimo kurimui.
+	EXEC SQL BEGIN DECLARE SECTION;
+		char Pavadinimas[101];
+		int Zaidimas;
+		char Aprasymas[501] = " ";
+		int Verte;
+	EXEC SQL END DECLARE SECTION;
+		
+	strcpy(Pavadinimas, pavadinimas);
+	char pasirinkimas[40];
+	int kurti = 0;
+	EXEC SQL WHENEVER SQLERROR GOTO klaida;
+		//Sukuriame zaidima.
+	SukurtiZaidima(slapyvardis, pavadinimas, aprasymas, transakcija);
+		//Gauname sukurto zaidimo ID.
+	EXEC SQL SELECT Id INTO :Zaidimas FROM Zaidimas WHERE Pavadinimas = :Pavadinimas;
+	printf("Ar norite kuriamam zaidimui priskirti pasiekimus?\n");
+	scanf(" %s", pasirinkimas);
+	if (pasirinkimas[0] == 't' || pasirinkimas[0] == 'T') kurti = 1;
+	else pasirinkimas[0] = 'B';
+		
+	while(kurti == 1)
+	{
+		printf("Iveskite K - kurti nauja pasiekima, B - issaugoti zaidima su pasiekimais, M - atsaukti\n");
+		scanf(" %s", pasirinkimas);
+		switch (pasirinkimas[0]) {
+			case 'M':
+			case 'B':
+				kurti = 0;
+				break;
+			case 'K':
+				ValytiBufferi();
+				printf("Iveskite pasiekimo pavadinima:\n");
+				scanf ("%[^\n]%*c", Pavadinimas);
+				printf("Iveskite pasiekimo aprasyma:\n");
+				scanf ("%[^\n]%*c", Aprasymas);
+				printf("Iveskite pasiekimo verte (5, 15, 30, 60):\n");
+				scanf (" %d", &Verte);
+				EXEC SQL INSERT INTO Pasiekimas (Verte, Zaidimas, Pavadinimas, Aprasymas)
+				VALUES (:Verte, :Zaidimas, :Pavadinimas, :Aprasymas);
+				break;
+		}
+		
+	}
+	klaida:
+	if (sqlca.sqlcode < 0) printf("SQL klaida %d, Pranesimas - %s.\n", SQLCODE, sqlca.sqlerrm.sqlerrmc);
+	if (pasirinkimas[0] == 'B') {
+		EXEC SQL COMMIT;
+		printf("Zaidimas su pasiekimais sukurtas. \n");
+	}
+	else {
+		EXEC SQL ROLLBACK;
+		printf("Zaidimo kurimas atsauktas. \n");
+	}
+}
+//Funkcija, kuri parodo visus konkretaus zaidejo pasiekimus.
+void Visi_Pasiekimai()
+{
+		//Duomenu apibrezimas.
+	EXEC SQL BEGIN DECLARE SECTION;
+		short Verte;
+		short Zaidimas;
+		char Pavadinimas[101];
+		short ID;
+		char Aprasymas[501];
+		char Zaidejas[21];
+	EXEC SQL END DECLARE SECTION;
+	
+	EXEC SQL WHENEVER SQLERROR GOTO error;
+	EXEC SQL WHENEVER NOT FOUND GOTO quit;
+	
+	//Slapyvardzio ivestis pasiekimu perziurejimui.
+	char slapyvardis[21];
+	GautiSlapyvardiIvesciai(slapyvardis);
+	strcpy(Zaidejas, slapyvardis);
+	
+	EXEC SQL DECLARE cursor CURSOR FOR
+	SELECT Verte, Zaidimas, Pavadinimas, ID, Aprasymas
+	FROM Pasiekimas, PasiekimuPelnymas
+	WHERE PasiekimuPelnymas.Zaidejas = :Zaidejas 
+	AND Pasiekimas.Id = PasiekimuPelnymas.Pasiekimas
+	ORDER BY Verte;
+	EXEC SQL OPEN cursor;
+		//Kintamuju sritis prisijungimui:
+	int pasiekimuKiekis = 0;
+	printf("Tavo pasiekimai: \n");
+	while ( 1 ) {
+		EXEC SQL FETCH cursor INTO :Verte, :Zaidimas, :Pavadinimas, :ID, :Aprasymas;
+		printf("Id: %d, Zaidimas: %d, Verte: %d, %s, \n", 
+			ID, Zaidimas, Verte, Pavadinimas);
+		if (Aprasymas[0] == 0) printf("  Aprasymo nera. \n");
+		else printf("  Aprasymas: %s \n", Aprasymas);
+		pasiekimuKiekis++;
+	}
+	error:
+	printf( "SQL klaida: %ld,\n pranesimas: %s", SQLCODE, sqlca.sqlerrm.sqlerrmc);
+	quit:
+	if (pasiekimuKiekis == 0 && SQLCODE >= 0) printf("Nera nei vieno pasiekimo \n");
+	EXEC SQL WHENEVER SQLERROR CONTINUE;
+	EXEC SQL WHENEVER NOT FOUND CONTINUE;
+	EXEC SQL CLOSE cursor;
+}
+
+//Si funkcija kviecia slapyvardziu spausdinima ir praso ivesti savo slapyvardi.
+void GautiSlapyvardiIvesciai(char *slapyvardis)
+{
+	SpausdintiSlapyvardziusIvesciai();
+	printf("Koks tavo slapyvardis? \n");
+	scanf("%20s", slapyvardis);
+	getchar();
+}
+
+//Si funkcija kvieciama pries ivedant savo slapyvardi. Isveda visu vartotoju vardus
+//Esant dideliam kiekiui naudotoju ji nera korektiska.
+//Esant butinybei, galima prideti parametra char array, naudoti ji WHERE su LIKE.  
+void SpausdintiSlapyvardziusIvesciai()
+{
+	printf("Registruoti naudotojai: \n");
+		//Pradiniai apibrezimai.
+	EXEC SQL WHENEVER SQLERROR GOTO error;
+	EXEC SQL WHENEVER NOT FOUND GOTO quit;
+	EXEC SQL BEGIN DECLARE SECTION;
+		char Slapyvardis[21];
+		char GimimoData[20];
+		char ElPastas[61];
+	EXEC SQL END DECLARE SECTION;
+	EXEC SQL DECLARE KursoriusVardams CURSOR FOR
+	SELECT Slapyvardis, GimimoData, ElPastas FROM Naudotojas;
+		//Uzklausos vykdymas.
+	EXEC SQL OPEN KursoriusVardams;
+	printf("Slapyvardis | Gimimo data | Elektroninis pastas \n");
+	while ( 1 ) {
+		EXEC SQL FETCH KursoriusVardams INTO :Slapyvardis, :GimimoData, :ElPastas;
+		printf("%s | %s | %s \n", Slapyvardis, GimimoData, ElPastas);
+	}
+		//Isimtys bei pabaiga.
+	error:
+	printf( "SQL klaida: %ld,\n pranesimas: %s", SQLCODE, sqlca.sqlerrm.sqlerrmc);
+	quit:
+	printf("\n");
+	EXEC SQL WHENEVER SQLERROR CONTINUE;
+	EXEC SQL WHENEVER NOT FOUND CONTINUE;
+	EXEC SQL CLOSE KursoriusVardams;
+}
+//Funkcija isspausdina naudotojo zaidimu pavadinimus, kad butu lengviau pasirinkti, kuri trinti.
+int SpausdintiZaidimuPavadinimus(char* slapyvardis)
+{
+	printf("Jusu sukurtu zaidimu pavadinimai: \n");
+		//Pradiniai apibrezimai.
+	EXEC SQL WHENEVER SQLERROR GOTO error;
+	EXEC SQL WHENEVER NOT FOUND GOTO quit;
+	EXEC SQL BEGIN DECLARE SECTION;
+		char Pavadinimas[101];
+		char Slapyvardis[21];
+	EXEC SQL END DECLARE SECTION;
+	strcpy(Slapyvardis, slapyvardis);
+	EXEC SQL DECLARE KursoriusZaidimams CURSOR FOR
+	SELECT Pavadinimas FROM Zaidimas
+	WHERE Autorius = :Slapyvardis;
+		//Uzklausos vykdymas.
+	EXEC SQL OPEN KursoriusZaidimams;
+	int ZaidimuKiekis = 0;
+	while ( 1 ) {
+		EXEC SQL FETCH KursoriusZaidimams INTO :Pavadinimas;
+		printf("%s, ", Pavadinimas);
+		ZaidimuKiekis++;
+	}
+		//Isimtys bei pabaiga.
+	error:
+	printf( "SQL klaida: %ld,\n pranesimas: %s", SQLCODE, sqlca.sqlerrm.sqlerrmc);
+	
+	quit:
+	if (ZaidimuKiekis == 0 && SQLCODE >= 0) printf("Nesukurete nei vieno zaidimo. \n");
+	else printf("\n");
+	EXEC SQL WHENEVER SQLERROR CONTINUE;
+	EXEC SQL WHENEVER NOT FOUND CONTINUE;
+	EXEC SQL CLOSE KursoriusZaidimams;
+	EXEC SQL CONNECT RESET;
+	return ZaidimuKiekis;
+}
+void ValytiBufferi()
+{
+	int c;
+	while ((c = getchar()) != '\n' && c != EOF) { }
+}
+void SpausdintiTarpa()
+{
+	printf("\n#############################\n");
+}
