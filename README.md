@@ -13,5 +13,6 @@ This is a repository for my previous and current study projects. And there have 
  * Logical programming (Prolog statements, queries, structures, algorithms, implementation of prolog);
  * Software creation (Software process, technologies, team project source code here <https://github.com/tesa4436/projectmayhem>, personal project here <https://github.com/Tristanas/PSK-TP>)
  * Numerical methods (implementing mathematical algorithms with Matlab: matrices, interpolation, approximation, linear and differential equations)
+ * Software design (design patterns, packages and complexity management, more info here <https://github.com/Tristanas/PS-projektavimas>)
  
  Most projects will stay as they were during the assessment. I will return to some projects and improve them either by increasing efficiency, expanding functionality or refactoring.
