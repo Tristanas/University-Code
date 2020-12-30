@@ -1,0 +1,26 @@
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\bin\Debug\XMPPklientas.exe.config
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\bin\Debug\XMPPklientas.exe
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\bin\Debug\XMPPklientas.pdb
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.csprojAssemblyReference.cache
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.Form1.resources
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.Properties.Resources.resources
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.csproj.GenerateResource.cache
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.csproj.CoreCompileInputs.cache
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.exe
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.pdb
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.RegisterForm.resources
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.MainWindow.resources
+C:\Users\manfr\source\repos\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.MsgWindow.resources
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\bin\Debug\XMPPklientas.exe.config
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\bin\Debug\XMPPklientas.exe
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\bin\Debug\XMPPklientas.pdb
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.csprojAssemblyReference.cache
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.MainWindow.resources
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.MsgWindow.resources
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.Properties.Resources.resources
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.RegisterForm.resources
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.csproj.GenerateResource.cache
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.csproj.CoreCompileInputs.cache
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.exe
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.pdb
+C:\Users\Vilius\Desktop\mif\KT\Pratybu atsiskaitymai\XMPPklientas\XMPPklientas\obj\Debug\XMPPklientas.Login.resources

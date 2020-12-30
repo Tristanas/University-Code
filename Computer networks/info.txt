@@ -1,0 +1,7 @@
+Computer networks:
+- During the lectures we covered about half of the Cisco Computer Networks Associate course (CCNA).
+- During the practices we created the following computer network projects:
+
+1. A simple server-client or p2p application for a game or other area. (tic tac toe with C, over localhost and in a few terminals)
+2. Implementation of an application protocol. (Mine was XMPP - extensible messaging and presence protocol and I had to create a chatting client. C# with WPF front-end)
+3. Simulation of routers with a graphical interface and implementation of a routing protocol (skipped this one).
