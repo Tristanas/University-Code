@@ -1,0 +1,5 @@
+dude(bill).
+dude(steve).
+dude(notch).
+
+theDude(Dude):- dude(X), X = notch, assert(visited(X)), Dude is X.
